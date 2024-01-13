@@ -24,9 +24,20 @@ body {
     width: 75%;
     margin: auto;
   }
+
+  .favorite{
+    padding: 2px;
+    margin: 15px;
+    font-size: 19px;
+  }
   
   
   .radio{
+    width: 74%;
+    margin: auto;
+  }
+
+  .list{
     width: 74%;
     margin: auto;
   }
