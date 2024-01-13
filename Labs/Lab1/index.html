@@ -10,29 +10,50 @@
 	<br>
 	<br>
 	<div class="form-body">
-		<h1> Brightspace UI Survey</h1>
+		<h1 class="header"> Brightspace UI Survey</h1>
 
 		<br>
 		<img src="images/landing_page.png" alt="https://uottawa.brightspace.com/d2l/home" width="600" height="450">
-		<br>
 
+		<div class="space"></div>
+
+		<fieldset class="personal">
+
+			<legend> Personal Information: </legend>
+
+			<div class="question">
+				<p>First name: <input type="text" name="firstname"  placeholder="First name"></p>
+				<p>Last name: <input type="text" name="lastname"  placeholder="Last name"></p>
+			</div>	
+		</fieldset>
+
+		<div class="space"></div>
 
 		<div class="question">
-			<h2> Personal Information: </h2>
-			<p>First name: <input type="text" name="firstname"  placeholder="First name"></p>
-			<p>Last name: <input type="text" name="lastname"  placeholder="Last name"></p>
-			<br>
-			<br>
-		</div>	
-		
-		<div class="question">
-			<h2> What you like </h2>
-			I like:<br>
-			<input type="checkbox" name="Color" value="Red">Red<br>
-			<input type="checkbox" name="Color" value="Green">Green<br>
-			<input type="checkbox" name="Color" value="Blue">Blue<br>
 			
-			<br>
+
+			<fieldset class="checkboxes">
+				<legend> Best Features: </legend>
+				
+			<label><input type="checkbox" name="Feature" value="Classes">Class Structure<br></label>
+			<label><input type="checkbox" name="Feature" value="NavBar">Navigation Bar<br></label>
+			<label><input type="checkbox" name="Feature" value="Settings">Settings<br></label>
+			<label><input type="checkbox" name="Feature" value="Messaging">Messaging<br></label>
+			</fieldset>
+
+			<div class="space"></div>
+
+
+
+			<fieldset class="radio"> 
+				<legend> What Platform do You Prefer:</legend>
+				<input type="radio" name="Platform" value="D2L"> Brightspace
+				<input type="radio" name="Platform" value="Canva"> Canva
+				<input type="radio" name="Platform" value="Other">  Other
+			</fieldset>
+
+			<div class="space"></div>
+			
 			
 			What is your favorite fruit?<br>
 			<select id="favorite">
@@ -54,6 +75,8 @@
 		<button id="submitButton" type="button" class="Sbutton">
 			SUBMIT
 		</button>
+		<br>
+		<br>
 	</div>
 	
 	<br>
