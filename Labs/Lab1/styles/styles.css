@@ -16,6 +16,7 @@ body {
   .checkboxes{
     width: 75%;
     margin: auto;
+    justify-content:center;
   }
 
   .space { margin-top: 30px; }
@@ -25,12 +26,17 @@ body {
     margin: auto;
   }
 
-  .favorite{
+  .role{
     padding: 2px;
     margin: 15px;
     font-size: 19px;
   }
-  
+  .TC{
+    width: 74%;
+    margin: auto;
+    border: 0px;
+    font-size: 19px;
+  }
   
   .radio{
     width: 74%;
@@ -52,6 +58,8 @@ body {
     display: inline-block;
     margin: 5px;
     font-size: 15px;
+    justify-content: left;
+    text-align: justify;
   }
 
 .form-body{

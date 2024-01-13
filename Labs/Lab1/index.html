@@ -13,7 +13,7 @@
 		<h1 class="header"> Brightspace UI Survey</h1>
 
 		<br>
-		<img src="images/landing_page.png" alt="https://uottawa.brightspace.com/d2l/home" width="600" height="450">
+		<a href="https://uottawa.brightspace.com/d2l/home"><img src="images/landing_page.png" width="600" height="450"></a>
 
 		<div class="space"></div>
 
@@ -31,6 +31,8 @@
 
 
 		<div class="question">
+
+
 			
 			<fieldset class="checkboxes">
 				<legend> Favorite Feature(s): </legend>
@@ -52,12 +54,12 @@
 			<div class="space"></div>
 
 			<fieldset class="list"> 
-				<legend> How often do you use Brightspace</legend>
-				<select class="favorite">
-					<option value="day" selected="selected">Once a day</option>
-					<option value="week">Once a week</option>
-					<option value="month">Once a month</option>
-					<option value="year">Once a year</option>
+				<legend> User role</legend>
+				<select class="role">
+					<option value="student" selected="selected">Student</option>
+					<option value="prof">Professor/TA</option>
+					<option value="admin">Admin</option>
+					<option value="Other">Other</option>
 				</select>
 			</fieldset>
 
@@ -69,6 +71,11 @@
 			</fieldset>
 
 		</div>
+		<div class="space"></div>		
+
+		<fieldset class="TC"> 
+		<label><input type="checkbox" name="Feature" value="Classes">I Accept The <a href="https://en.wikipedia.org/wiki/Terms_of_service">Terms of Service</a> <br></label>
+		</fieldset>
 		
 		<div class="space"></div>		
 		<button id="submitButton" type="button" class="Sbutton">
