@@ -56,24 +56,40 @@ body {
 
 .form-body{
     margin: auto;
-    width: 50%;
+    width: 65%;
     height: 94%;
     border: 3px solid black;
     background-color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.text {
+  width: 70%;
+  height: 75%;
+  padding: 12px 12px;
+  box-sizing: border-box;
+  border: 2px solid #171515;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 16px;
+}
 
 .Sbutton {
   text-align: center;
   background-color: #8EABC9;
-  padding: 12px 75px;
+  width: 78%;
+  height: 50px;
   display: inline-block;
   font-size: 16px;
   font-weight: bolder;
-  text-decoration: none;
-  color: #000000;
+  text-decoration:none;
+  color: #333030;
   cursor:pointer;
+  letter-spacing: 1px;
   border-radius: 5px;
+  
+}
+.Sbutton:hover{
+  background-color: #275d98;
 }
 
 .sign{
@@ -85,4 +101,5 @@ body {
   img {
     display: block; 
     margin: 0 auto; 
+    width: 80%;
   }
