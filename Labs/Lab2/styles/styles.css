@@ -1,0 +1,75 @@
+.topnav button{
+    padding: 15px 14px;
+    margin: 20px;
+    align-items: center;
+    width: 15%;
+    cursor:pointer;
+    background-color: #c8dcf1;
+    border-width: 0px;
+    border-radius: 25px;
+    font-size: large;
+    font-family:Arial, Helvetica, sans-serif;
+    
+  }
+
+  .topnav button:hover{
+    background-color: #697a8f;
+  }
+  .topnav button:active{
+    background-color: #a7a7a7;
+  }
+  
+.topnav{
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+  h2{
+    font-size: 42px;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    font-size:  30px;
+  }
+
+
+    
+
+    .maincontent{
+        text-align: center;
+        margin: 45px;
+
+    }
+    .maincontent img{
+        align-content: center;
+        border: 2px black;
+        width: 200px;
+        height: 200px;
+    }
+
+    [type=radio] { 
+        border: 2px black;
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+  
+    [type=radio] + img {
+        cursor: pointer;
+    }
+
+    [type=radio]:checked + img {
+        outline: 5px solid #f00;
+    }
+
+  .diet{
+    width: 99%;
+    border:0px;
+    margin: auto;
+  }
+
