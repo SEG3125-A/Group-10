@@ -1,6 +1,11 @@
+body{
+    background-color: #d7d6d6;
+}
+
 .topnav button{
     padding: 15px 14px;
     margin: 20px;
+    height: fit-content;
     align-items: center;
     width: 15%;
     cursor:pointer;
@@ -17,10 +22,14 @@
   }
   .topnav button:active{
     background-color: #a7a7a7;
+    transform: translateY(1px);
   }
   
 .topnav{
+    display: flex;
+    justify-content: space-around;
     text-align: center;
+    width: 100%;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -37,12 +46,9 @@
   }
 
 
-    
-
     .maincontent{
         text-align: center;
         margin: 45px;
-
     }
     .maincontent img{
         align-content: center;
@@ -52,7 +58,6 @@
     }
 
     [type=radio] { 
-        border: 2px black;
         position: absolute;
         opacity: 0;
         width: 0;
@@ -61,15 +66,70 @@
   
     [type=radio] + img {
         cursor: pointer;
+        margin: 55px;
+    }
+
+    label::before {
+        background-image: url(images/chicken.png);
+    }
+
+    :checked + label::before {
+        background-image: url(images/chickenCheck.png);
     }
 
     [type=radio]:checked + img {
-        outline: 5px solid #f00;
+        outline: 5px solid #017b24;
     }
 
-  .diet{
-    width: 99%;
-    border:0px;
-    margin: auto;
-  }
+    .product-container-wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    .product-container {
+        background-color: #f1f1f1;
+        border: 3px solid black;
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        width: 200px;
+    }
+
+    .product-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .add-to-cart-button {
+        background-color: #15981a;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        border-radius: 9px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .in-cart {
+        background-color: #FF6347; 
+        color: white;
+    }
+    .notification {
+        margin: auto;
+        border-radius: 10px;
+        background-color: green;
+        color: white;
+        font-size: 30px;
+        font-weight: bolder;
+        width: 50%;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+        display: none;
+    }
 

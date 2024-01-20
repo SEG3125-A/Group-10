@@ -11,38 +11,66 @@
        <button><img src="images/cart.png"><br>CART</button>
     </div>
 
-
-
-
-
     <div id="Client" class="maincontent">
-
         <h2> Do You Have Any Dietary Restrictions?</h2>
-
-
         <p> Make A Selection</p>
         <label>
-            <input type="radio" name="Rest" value="None" checked>
+            <input type="radio" name="Rest" value="None" checked onclick="updateDietaryPreference(this.value)">
             <img src="images/NR.png" alt="No restriction">
           </label>
 
           <label>
-            <input type="radio" name="Rest" value="Veg">
+            <input type="radio" name="Rest" value="are Vegeterian" onclick="updateDietaryPreference(this.value)">
             <img src="images/Veg.png" alt="Vegeterian"> 
           </label>
           
           <label>
-            <input type="radio" name="Rest" value="GF">
+            <input type="radio" name="Rest" value="are Gluten Free" onclick="updateDietaryPreference(this.value)">
             <img src="images/GF.png" alt="Gluten Free">
           </label>
 
-      </div>
+    </div>
+
+    <div id="Shop" class="maincontent">
+        <h1>Since you told us you <span id="DietaryPref">have No Dietary Preference</span></h1>
+        <p>We know you'd like:</p>
+        <div class="notification" id="notification">Item added to cart!</div>
+
+        <div class="product-container-wrapper">
+
+        <div id="chicken" class="product-container">
+            <img class="product-image" src="images/chicken.png" alt="Chicken (whole)">
+            <p>Chicken</p>
+            <h3>$15.50</h3>
+            <button class="add-to-cart-button" onclick="toggleCartStatus(this)">Add to Cart</button>
+        </div>
+
+        <div id="avocado" class="product-container">
+            <img class="product-image" src="images/avocado.png" alt="Avocado">
+            <p>Avocado</p>
+            <h3>$3.25</h3>
+            <button class="add-to-cart-button" onclick="toggleCartStatus(this)">Add to Cart</button>
+        </div>
+
+        <div id="Bread" class="product-container">
+            <img class="product-image" src="images/Bread.png" alt="Bread">
+            <p>Bread</p>
+            <h3>$4.50</h3>
+            <button class="add-to-cart-button" onclick="toggleCartStatus(this)">Add to Cart</button>
+        </div>
+
+    </div>
+
+    </div>
       
+    <div id="Shop" class="maincontent">
+        <h1></h1>
+    </div>
 
 
 
 
 
-
+    <script src="scripts/main.js"></script>
     </body>
 </html>
