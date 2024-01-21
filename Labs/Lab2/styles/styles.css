@@ -21,10 +21,10 @@ body{
     background-color: #697a8f;
   }
   .topnav button:active{
-    background-color: #a7a7a7;
+    background-color: #c7c7c7;
     transform: translateY(1px);
   }
-  
+
 .topnav{
     display: flex;
     justify-content: space-around;
@@ -57,14 +57,14 @@ body{
         height: 200px;
     }
 
-    [type=radio] { 
+    [type=checkbox] { 
         position: absolute;
         opacity: 0;
         width: 0;
         height: 0;
     }
   
-    [type=radio] + img {
+    [type=checkbox] + img {
         cursor: pointer;
         margin: 55px;
     }
@@ -77,7 +77,7 @@ body{
         background-image: url(images/chickenCheck.png);
     }
 
-    [type=radio]:checked + img {
+    [type=checkbox]:checked + img {
         outline: 5px solid #017b24;
     }
 
