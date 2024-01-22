@@ -1,17 +1,18 @@
 // products
 const products = [
-    { id: 'chicken', name: 'Chicken', price: 15.50, diet: "GF", imgsrc: "images/chicken.png" },
-    { id: 'avocado', name: 'Avocado', price: 3.25, diet: "VEGGF", imgsrc: "images/avocado.png" },
-    { id: 'bread', name: 'Bread', price: 4.50, diet: "VEG", imgsrc: "images/Bread.png" },
-    {id: 'rice', name: 'Rice', price: 3.50, diet:"VEGGF", imgsrc: 'images/rice.png'},
-    {id: 'bacon', name: 'Bacon', price: 5.00, diet: "GF", imgsrc: 'images/bacon.png'},
-    {id: 'steak', name: 'Steak', price: 30.00, diet: "GF", imgsrc: 'images/steak.png'},
-    {id: 'broccoli', name: 'Broccoli', price: 2.50, diet: 'VEGGF', imgsrc: 'images/broccoli.png'},
-    {id: 'banana', name: 'Banana', price: 1.25, diet: 'VEGGF', imgsrc: 'images/banana.png'},
-    {id: 'crab', name: 'Crab', price: 20.50, diet: "GF", imgsrc: 'images/crab.png'},
-    {id: 'watermelon', name: 'Watermelon', price: 5.00, diet: "VEGGF", imgsrc: 'images/watermelon.png'}
+    { id: 'chicken', name: 'Chicken', price: 15.50, diet: "GF", imgsrc: "images/chicken.png", organic: true },
+    { id: 'avocado', name: 'Avocado', price: 3.25, diet: "VEGGF", imgsrc: "images/avocado.png", organic: false },
+    { id: 'bread', name: 'Bread', price: 4.50, diet: "VEG", imgsrc: "images/Bread.png" ,organic: true},
+    {id: 'rice', name: 'Rice', price: 3.50, diet:"VEGGF", imgsrc: 'images/rice.png', organic: false},
+    {id: 'bacon', name: 'Bacon', price: 5.00, diet: "GF", imgsrc: 'images/bacon.png', organic: false},
+    {id: 'steak', name: 'Steak', price: 30.00, diet: "GF", imgsrc: 'images/steak.png',organic: true},
+    {id: 'broccoli', name: 'Broccoli', price: 2.50, diet: 'VEGGF', imgsrc: 'images/broccoli.png', organic: true},
+    {id: 'banana', name: 'Banana', price: 1.25, diet: 'VEGGF', imgsrc: 'images/banana.png', organic: true},
+    {id: 'crab', name: 'Crab', price: 20.50, diet: "GF", imgsrc: 'images/crab.png', organic: true},
+    {id: 'watermelon', name: 'Watermelon', price: 5.00, diet: "VEGGF", imgsrc: 'images/watermelon.png', organic: true}
   ];
 let dietaryPreference = 'NONE';
+let organicOnly = false;
 let cart = [];
 let subtotal = 0;
 
@@ -51,6 +52,16 @@ window.onload = function() {
     products.sort(sortByPrice);
 };
 
+function updateOrganic(){
+    var check = document.getElementById('organic');
+    if(check.checked){ organicOnly = true;
+    }else{organicOnly = false;}
+
+    subtotal = 0;
+    cart = [];
+    populateProductList(dietaryPreference, organicOnly);
+    populateCart(cart);
+}
 
 
 
@@ -119,39 +130,67 @@ function updateDietaryPreference(value) {
     }
     subtotal = 0;
     cart = [];
-    populateProductList(dietaryPreference);
+    populateProductList(dietaryPreference, organicOnly);
     populateCart(cart);
 }
 
 // Populates product list based on dietary prefrence
-function populateProductList(dietaryPreference){
+function populateProductList(dietaryPreference, organicOnly){
     const shopDiv = document.getElementById('Shop');
     const productContainerWrapper = shopDiv.querySelector('.product-container-wrapper');
     productContainerWrapper.innerHTML = '';
     if(dietaryPreference === 'NONE'){
         products.forEach(product => {
-            const productDiv = createProductDiv(product);
-            productContainerWrapper.appendChild(productDiv); 
+            if(organicOnly === true){
+                if(product.organic){
+                    const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                }
+            } else {
+                const productDiv = createProductDiv(product);
+                productContainerWrapper.appendChild(productDiv); 
+            }
         });
     }else if (dietaryPreference === 'VEGGF'){
         products.forEach(product => {
             if(product.diet === 'VEGGF'){
-                const productDiv = createProductDiv(product);
-                productContainerWrapper.appendChild(productDiv); 
+                if(organicOnly = true){
+                    if(product.organic){
+                        const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                    }
+                } else {
+                    const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                }
             }
         });
     }else if(dietaryPreference === 'VEG'){
         products.forEach(product => {
             if(product.diet === 'VEG' || product.diet === 'VEGGF'){
-                const productDiv = createProductDiv(product);
-                productContainerWrapper.appendChild(productDiv); 
+                if(organicOnly === true){
+                    if(product.organic){
+                        const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                    }
+                } else {
+                    const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                }
             }
         });
     }else{
         products.forEach(product => {
             if(product.diet === 'GF'|| product.diet === 'VEGGF'){
-                const productDiv = createProductDiv(product);
-                productContainerWrapper.appendChild(productDiv); 
+                if(organicOnly === true){
+                    if(product.organic){
+                        const productDiv = createProductDiv(product);
+                        productContainerWrapper.appendChild(productDiv); 
+                    }
+                } else {
+                    const productDiv = createProductDiv(product);
+                    productContainerWrapper.appendChild(productDiv); 
+                }
             }
         });
     }
