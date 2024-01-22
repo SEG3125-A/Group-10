@@ -76,16 +76,13 @@ body{
         margin: 55px;
     }
 
-    label::before {
-        background-image: url(images/chicken.png);
-    }
-
-    :checked + label::before {
-        background-image: url(images/chickenCheck.png);
-    }
 
     [type=checkbox]:checked + img {
         outline: 5px solid #017b24;
+    }
+
+    [type=checkbox]:not(:checked) + img {
+        outline: 5px solid #f00d01;
     }
 
     .product-container-wrapper {
