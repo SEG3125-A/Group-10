@@ -1,10 +1,19 @@
 // products
 const products = [
-    { id: 'chicken', name: 'Chicken', price: 15.50, quantity: 0 },
-    { id: 'avocado', name: 'Avocado', price: 3.25, quantity: 0 },
-    { id: 'bread', name: 'Bread', price: 4.50, quantity: 0 },
+    { id: 'chicken', name: 'Chicken', price: 15.50, diet: "GF", imgsrc: "images/chicken.png" },
+    { id: 'avocado', name: 'Avocado', price: 3.25, diet: "VEGGF", imgsrc: "images/avocado.png" },
+    { id: 'bread', name: 'Bread', price: 4.50, diet: "VEG", imgsrc: "images/Bread.png" },
+    {id: 'rice', name: 'Rice', price: 3.50, diet:"VEGGF", imgsrc: 'images/rice.png'},
+    {id: 'bacon', name: 'Bacon', price: 5.00, diet: "GF", imgsrc: 'images/bacon.png'},
+    {id: 'steak', name: 'Steak', price: 30.00, diet: "GF", imgsrc: 'images/steak.png'},
+    {id: 'broccoli', name: 'Broccoli', price: 2.50, diet: 'VEGGF', imgsrc: 'images/broccoli.png'},
+    {id: 'banana', name: 'Banana', price: 1.25, diet: 'VEGGF', imgsrc: 'images/banana.png'},
+    {id: 'crab', name: 'Crab', price: 20.50, diet: "GF", imgsrc: 'images/crab.png'},
+    {id: 'watermelon', name: 'Watermelon', price: 5.00, diet: "VEGGF", imgsrc: 'images/watermelon.png'}
   ];
 let dietaryPreference = 'NONE';
+let cart = [];
+let subtotal = 0;
 
 function showProfile() {
     document.getElementById('Client').style.display = 'block';
@@ -37,9 +46,15 @@ function setButtonBackgroundColor(buttonId, color) {
 
 window.onload = function() {
     showProfile();
+    populateProductList(dietaryPreference);
+    populateCart(cart);
+    products.sort(sortByPrice);
 };
 
-// Updated dietary prefrence
+
+
+
+// Updates dietary prefrence
 function updateDietaryPreference(value) {
     var checkboxes = document.getElementsByName('Rest');
     // check if user is trying to uncheck everything and default to None
@@ -102,16 +117,47 @@ function updateDietaryPreference(value) {
             }
         }
     }
+    subtotal = 0;
+    cart = [];
     populateProductList(dietaryPreference);
+    populateCart(cart);
 }
 
-//TODO: 
+// Populates product list based on dietary prefrence
 function populateProductList(dietaryPreference){
-    console.log("DO THIS");
-    // use createProductDiv
+    const shopDiv = document.getElementById('Shop');
+    const productContainerWrapper = shopDiv.querySelector('.product-container-wrapper');
+    productContainerWrapper.innerHTML = '';
+    if(dietaryPreference === 'NONE'){
+        products.forEach(product => {
+            const productDiv = createProductDiv(product);
+            productContainerWrapper.appendChild(productDiv); 
+        });
+    }else if (dietaryPreference === 'VEGGF'){
+        products.forEach(product => {
+            if(product.diet === 'VEGGF'){
+                const productDiv = createProductDiv(product);
+                productContainerWrapper.appendChild(productDiv); 
+            }
+        });
+    }else if(dietaryPreference === 'VEG'){
+        products.forEach(product => {
+            if(product.diet === 'VEG' || product.diet === 'VEGGF'){
+                const productDiv = createProductDiv(product);
+                productContainerWrapper.appendChild(productDiv); 
+            }
+        });
+    }else{
+        products.forEach(product => {
+            if(product.diet === 'GF'|| product.diet === 'VEGGF'){
+                const productDiv = createProductDiv(product);
+                productContainerWrapper.appendChild(productDiv); 
+            }
+        });
+    }
 }
 
-
+// creates div used by populateProductList
 function createProductDiv(product) {
     const productContainer = document.createElement('div');
     productContainer.id = product.id;
@@ -135,31 +181,74 @@ function createProductDiv(product) {
     addToCartButton.classList.add('add-to-cart-button');
     addToCartButton.textContent = 'Add to Cart';
     addToCartButton.onclick = function() {
-        toggleCartStatus(this);
+        toggleCartStatus(this, product);
     };
     productContainer.appendChild(addToCartButton);
 
     return productContainer;
 }
 
-function toggleCartStatus(button) {
+function toggleCartStatus(button, product) {
     var notification = document.getElementById('notification');
+    console.log(product);
 
     if (button.innerText === 'Add to Cart') {
-        // Add to cart logic
+        cart.push(product);
         notification.innerText = 'Item added to cart!';
         button.innerText = 'Remove from Cart';
         button.classList.add('in-cart');
         
     } else {
-        // Remove from cart logic
+        const index = cart.findIndex(item => item.id === product.id);
+        if (index !== -1) {
+            cart.splice(index, 1);
+        }
         notification.innerText = 'Item removed from cart!';
         button.innerText = 'Add to Cart';
         button.classList.remove('in-cart');
     }
+    populateCart(cart);
 
     notification.style.display = 'block';
     setTimeout(function() {
         notification.style.display = 'none';
     }, 2500);
+}
+
+function populateCart(cart) {
+    const cartContainer = document.getElementById('Cart');
+    cartContainer.innerHTML = '';
+    subtotal = 0;
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+        const productList = document.createElement('ul');
+        cart.forEach(function(product) {
+            const listItem = createProductListItem(product);
+            productList.appendChild(listItem);
+        });
+        cartContainer.appendChild(productList);
+        cart.forEach(function(product) {
+            subtotal += product.price;
+        });
+        const subtotalElement = document.createElement('p');
+        subtotalElement.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+        cartContainer.appendChild(subtotalElement);
+    }
+}
+
+function createProductListItem(product) {
+    const listItem = document.createElement('li');
+    const productName = document.createElement('span');
+    productName.textContent = product.name;
+    listItem.appendChild(productName);
+    const productPrice = document.createElement('span');
+    productPrice.textContent = `$${product.price.toFixed(2)}`;
+    listItem.appendChild(productPrice);
+    return listItem;
+}
+
+function sortByPrice(itemA, itemB) {
+    return itemA.price - itemB.price;
 }
