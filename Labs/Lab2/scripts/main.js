@@ -59,6 +59,9 @@ function updateOrganic(){
 
     subtotal = 0;
     cart = [];
+    if(organicOnly){
+        document.getElementById('DietaryPref').innerText += ' (ORGANIC ONLY)';
+    }
     populateProductList(dietaryPreference, organicOnly);
     populateCart(cart);
 }
@@ -128,6 +131,10 @@ function updateDietaryPreference(value) {
             }
         }
     }
+    if(organicOnly){
+        document.getElementById('DietaryPref').innerText += ' (ORGANIC ONLY)';
+    }
+    
     subtotal = 0;
     cart = [];
     populateProductList(dietaryPreference, organicOnly);
