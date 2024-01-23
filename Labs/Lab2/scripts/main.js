@@ -1,18 +1,19 @@
 // products
 const products = [
-    { id: 'chicken', name: 'Chicken', price: 15.50, diet: "GF", imgsrc: "images/chicken.png", organic: true },
-    { id: 'avocado', name: 'Avocado', price: 3.25, diet: "VEGGF", imgsrc: "images/avocado.png", organic: false },
-    { id: 'bread', name: 'Bread', price: 4.50, diet: "VEG", imgsrc: "images/Bread.png" ,organic: true},
-    {id: 'rice', name: 'Rice', price: 3.50, diet:"VEGGF", imgsrc: 'images/rice.png', organic: false},
-    {id: 'bacon', name: 'Bacon', price: 5.00, diet: "GF", imgsrc: 'images/bacon.png', organic: false},
-    {id: 'steak', name: 'Steak', price: 30.00, diet: "GF", imgsrc: 'images/steak.png',organic: true},
-    {id: 'broccoli', name: 'Broccoli', price: 2.50, diet: 'VEGGF', imgsrc: 'images/broccoli.png', organic: true},
-    {id: 'banana', name: 'Banana', price: 1.25, diet: 'VEGGF', imgsrc: 'images/banana.png', organic: true},
-    {id: 'crab', name: 'Crab', price: 20.50, diet: "GF", imgsrc: 'images/crab.png', organic: true},
-    {id: 'watermelon', name: 'Watermelon', price: 5.00, diet: "VEGGF", imgsrc: 'images/watermelon.png', organic: true}
+    { id: 'chicken', name: 'Chicken', price: 15.50, diet: "GF", imgsrc: "images/chicken.png", organic: true, diabetic: true },
+    { id: 'avocado', name: 'Avocado', price: 3.25, diet: "VEGGF", imgsrc: "images/avocado.png", organic: false, diabetic: true },
+    { id: 'bread', name: 'Bread', price: 4.50, diet: "VEG", imgsrc: "images/Bread.png" ,organic: true, diabetic: false},
+    {id: 'rice', name: 'Rice', price: 3.50, diet:"VEGGF", imgsrc: 'images/rice.png', organic: false, diabetic: false},
+    {id: 'bacon', name: 'Bacon', price: 5.00, diet: "GF", imgsrc: 'images/bacon.png', organic: false, diabetic: true},
+    {id: 'steak', name: 'Steak', price: 30.00, diet: "GF", imgsrc: 'images/steak.png',organic: true, diabetic: true},
+    {id: 'broccoli', name: 'Broccoli', price: 2.50, diet: 'VEGGF', imgsrc: 'images/broccoli.png', organic: true, diabetic: true},
+    {id: 'banana', name: 'Banana', price: 1.25, diet: 'VEGGF', imgsrc: 'images/banana.png', organic: true, diabetic: true},
+    {id: 'crab', name: 'Crab', price: 20.50, diet: "GF", imgsrc: 'images/crab.png', organic: true, diabetic: true},
+    {id: 'watermelon', name: 'Watermelon', price: 5.00, diet: "VEGGF", imgsrc: 'images/watermelon.png', organic: true, diabetic: false}
   ];
 let dietaryPreference = 'NONE';
 let organicOnly = false;
+let Diabetes = false;
 let cart = [];
 let subtotal = 0;
 
@@ -66,7 +67,23 @@ function updateOrganic(){
     populateCart(cart);
 }
 
+function updateDiabetes(){
+    var check = document.getElementById('Diabetic');
+    if(check.checked) { 
+        Diabetes = true;
+        document.getElementById('DietaryPref').innerText += ' (DIABETIC FRIENDLY)';
+    } else {
+        Diabetes = false;
+        let val = document.getElementById('DietaryPref').innerText;
+        document.getElementById('DietaryPref').innerText = val.replace(' (DIABETIC FRIENDLY)', '');
+    }
 
+    subtotal = 0;
+    cart = [];
+    
+    populateProductList(dietaryPreference, organicOnly);
+    populateCart(cart);
+}
 
 // Updates dietary prefrence
 function updateDietaryPreference(value) {
@@ -134,6 +151,10 @@ function updateDietaryPreference(value) {
     if(organicOnly){
         document.getElementById('DietaryPref').innerText += ' (ORGANIC ONLY)';
     }
+
+    if (Diabetes) {
+        document.getElementById('DietaryPref').innerText += ' (DIABETIC FRIENDLY)';
+    }
     
     subtotal = 0;
     cart = [];
@@ -148,11 +169,10 @@ function populateProductList(dietaryPreference, organicOnly){
     productContainerWrapper.innerHTML = '';
     if(dietaryPreference === 'NONE'){
         products.forEach(product => {
-            if(organicOnly === true){
-                if(product.organic){
-                    const productDiv = createProductDiv(product);
-                    productContainerWrapper.appendChild(productDiv); 
-                }
+            if (organicOnly && !product.organic) {
+                // Nothing
+            } else if (Diabetes && !product.diabetic) {
+                // Nothing
             } else {
                 const productDiv = createProductDiv(product);
                 productContainerWrapper.appendChild(productDiv); 
@@ -161,11 +181,10 @@ function populateProductList(dietaryPreference, organicOnly){
     }else if (dietaryPreference === 'VEGGF'){
         products.forEach(product => {
             if(product.diet === 'VEGGF'){
-                if(organicOnly = true){
-                    if(product.organic){
-                        const productDiv = createProductDiv(product);
-                    productContainerWrapper.appendChild(productDiv); 
-                    }
+                if (organicOnly && !product.organic) {
+                    // Nothing
+                } else if (Diabetes && !product.diabetic) {
+                    // Nothing
                 } else {
                     const productDiv = createProductDiv(product);
                     productContainerWrapper.appendChild(productDiv); 
@@ -175,11 +194,10 @@ function populateProductList(dietaryPreference, organicOnly){
     }else if(dietaryPreference === 'VEG'){
         products.forEach(product => {
             if(product.diet === 'VEG' || product.diet === 'VEGGF'){
-                if(organicOnly === true){
-                    if(product.organic){
-                        const productDiv = createProductDiv(product);
-                    productContainerWrapper.appendChild(productDiv); 
-                    }
+                if (organicOnly && !product.organic) {
+                    // Nothing
+                } else if (Diabetes && !product.diabetic) {
+                    // Nothing
                 } else {
                     const productDiv = createProductDiv(product);
                     productContainerWrapper.appendChild(productDiv); 
@@ -189,11 +207,10 @@ function populateProductList(dietaryPreference, organicOnly){
     }else{
         products.forEach(product => {
             if(product.diet === 'GF'|| product.diet === 'VEGGF'){
-                if(organicOnly === true){
-                    if(product.organic){
-                        const productDiv = createProductDiv(product);
-                        productContainerWrapper.appendChild(productDiv); 
-                    }
+                if (organicOnly && !product.organic) {
+                    // Nothing
+                } else if (Diabetes && !product.diabetic) {
+                    // Nothing
                 } else {
                     const productDiv = createProductDiv(product);
                     productContainerWrapper.appendChild(productDiv); 
