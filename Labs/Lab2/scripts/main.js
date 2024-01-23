@@ -55,14 +55,17 @@ window.onload = function() {
 
 function updateOrganic(){
     var check = document.getElementById('organic');
-    if(check.checked){ organicOnly = true;
-    }else{organicOnly = false;}
+    if(check.checked){ 
+        organicOnly = true;
+        document.getElementById('DietaryPref').innerText += ' (ORGANIC ONLY)';
+    } else{ 
+        let val = document.getElementById('DietaryPref').innerText;
+        document.getElementById('DietaryPref').innerText = val.replace(' (ORGANIC ONLY)', '');
+        organicOnly = false;
+    }
 
     subtotal = 0;
     cart = [];
-    if(organicOnly){
-        document.getElementById('DietaryPref').innerText += ' (ORGANIC ONLY)';
-    }
     populateProductList(dietaryPreference, organicOnly);
     populateCart(cart);
 }
