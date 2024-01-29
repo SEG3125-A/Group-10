@@ -9,6 +9,7 @@ const products = [
     organic: true,
     diabetic: true,
     LactoseFree: true,
+    Category: "Meat",
   },
   {
     id: "avocado",
@@ -19,6 +20,7 @@ const products = [
     organic: false,
     diabetic: true,
     LactoseFree: true,
+    Category: "Vegetable",
   },
   {
     id: "bread",
@@ -29,6 +31,7 @@ const products = [
     organic: true,
     diabetic: false,
     LactoseFree: true,
+    Category: "Carbs",
   },
   {
     id: "rice",
@@ -39,6 +42,7 @@ const products = [
     organic: false,
     diabetic: false,
     LactoseFree: true,
+    Category: "Carbs",
   },
   {
     id: "bacon",
@@ -49,6 +53,7 @@ const products = [
     organic: false,
     diabetic: true,
     LactoseFree: true,
+    Category: "Meat",
   },
   {
     id: "steak",
@@ -59,6 +64,7 @@ const products = [
     organic: true,
     diabetic: true,
     LactoseFree: true,
+    Category: "Meat",
   },
   {
     id: "broccoli",
@@ -69,6 +75,7 @@ const products = [
     organic: true,
     diabetic: true,
     LactoseFree: true,
+    Category: "Vegetable",
   },
   {
     id: "banana",
@@ -79,6 +86,7 @@ const products = [
     organic: true,
     diabetic: true,
     LactoseFree: true,
+    Category: "Fruit",
   },
   {
     id: "crab",
@@ -89,6 +97,7 @@ const products = [
     organic: true,
     diabetic: true,
     LactoseFree: true,
+    Category: "Meat",
   },
   {
     id: "watermelon",
@@ -99,6 +108,7 @@ const products = [
     organic: true,
     diabetic: false,
     LactoseFree: true,
+    Category: "Fruit",
   },
   {
     id: "milk",
@@ -109,6 +119,7 @@ const products = [
     organic: true,
     diabetic: false,
     LactoseFree: false,
+    Category: "Dairy",
   },
   {
     id: "oatmilk",
@@ -119,6 +130,7 @@ const products = [
     organic: true,
     diabetic: false,
     LactoseFree: true,
+    Category: "Dairy",
   },
 ];
 let dietaryPreference = "NONE";
@@ -382,6 +394,14 @@ function createProductDiv(product) {
   const productName = document.createElement("p");
   productName.textContent = product.name;
   productContainer.appendChild(productName);
+
+  const productCategory = document.createElement("p");
+  productCategory.textContent = product.Category;
+  productCategory.style.color = "red";
+  productCategory.style.fontSize = "20px";
+  productCategory.style.marginTop = "10px";
+  productCategory.style.marginBottom = "10px";
+  productContainer.appendChild(productCategory);
 
   const productPrice = document.createElement("h3");
   productPrice.textContent = `$${product.price.toFixed(2)}`;
