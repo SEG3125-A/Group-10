@@ -1,6 +1,7 @@
 // This function is called when any of the tab is clicked
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 let cart = [];
+let selectedCategories = ["Fruit", "Meat", "Dairy", "Carbs"];
 
 function openInfo(evt, tabName) {
   console.log(evt);
@@ -183,4 +184,33 @@ function createProductListItem(product, quantity) {
 
 function sortByPrice(itemA, itemB) {
   return itemA.price - itemB.price;
+}
+
+function onCategoryChange() {
+  console.log("Category changed");
+
+  const inputVegetable = document.getElementById("inputVegetable");
+  const inputFruit = document.getElementById("inputFruits");
+  const inputMeat = document.getElementById("inputMeat");
+  const inputDairy = document.getElementById("inputDairy");
+  const inputCarbs = document.getElementById("inputCarbs");
+
+  var selectedOptions = [];
+  if (inputVegetable.checked) {
+    selectedOptions.push("Vegetable");
+  }
+  if (inputFruit.checked) {
+    selectedOptions.push("Fruit");
+  }
+  if (inputMeat.checked) {
+    selectedOptions.push("Meat");
+  }
+  if (inputDairy.checked) {
+    selectedOptions.push("Dairy");
+  }
+  if (inputCarbs.checked) {
+    selectedOptions.push("Carbs");
+  }
+
+  selectedCategories = selectedOptions;
 }
