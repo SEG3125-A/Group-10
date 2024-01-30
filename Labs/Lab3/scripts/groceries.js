@@ -94,20 +94,27 @@ var products = [
 function restrictListProducts(prods, restrictions) {
   let product_info = [];
 
-  if (restrictions[0] == "NONE") {
-    return prods;
+  let category_prods = [];
+  for (let prod of prods) {
+    if (selectedCategories.includes(prod.Category)) {
+      category_prods.push(prod);
+    }
   }
 
-  for (let i = 0; i < prods.length; i += 1) {
+  if (restrictions[0] == "NONE") {
+    return category_prods;
+  }
+
+  for (let i = 0; i < category_prods.length; i += 1) {
     var flag = true;
     for (let restriction of restrictions) {
-      if (!prods[i].diet.includes(restriction)) {
+      if (!category_prods[i].diet.includes(restriction)) {
         flag = false;
         break;
       }
     }
     if (flag == true) {
-      product_info.push(prods[i]);
+        product_info.push(category_prods[i]);
     }
   }
 

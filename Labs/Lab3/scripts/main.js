@@ -1,7 +1,7 @@
 // This function is called when any of the tab is clicked
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 let cart = [];
-let selectedCategories = ["Fruit", "Meat", "Dairy", "Carbs"];
+let selectedCategories = ["Fruit", "Meat", "Dairy", "Carbs", "Vegetable"];
 
 function openInfo(evt, tabName) {
   console.log(evt);
@@ -213,4 +213,5 @@ function onCategoryChange() {
   }
 
   selectedCategories = selectedOptions;
+  submitDietRestrictions('displayProduct');
 }
