@@ -23,7 +23,7 @@ function openInfo(evt, tabName) {
 }
 
 // This function disables other options if the 'None' option is selected
-function handleNoneCheckbox(checkbox) {
+function handleNoneCheckbox(checkbox, slct2) {
   var otherCheckboxes = document.querySelectorAll(
     'input[name="diet"]:not([value="NONE"])'
   );
@@ -33,10 +33,28 @@ function handleNoneCheckbox(checkbox) {
       otherCheckboxes[i].checked = false;
     }
   }
+  var s2 = document.getElementById(slct2);
+  s2.innerHTML = "";
+  for (i = 0; i < products.length; i++) {
+    var product = products[i];
+    // new code
+    // create product div and add it in the DOM
+    var productContainer = createProductDiv(product);
+    s2.appendChild(productContainer);
+  }
 }
 
-// handles the clicking of 'View Products' and displays the relevant products
+// handles the clicking of 'View Products'
 function submitDietRestrictions(slct2) {
+  updateDietRestrictions(slct2);
+  // switch to the Products tab
+  productTablink = document.getElementsByClassName("tablinks products");
+  productTablink.className += " active";
+  openInfo(event, "Products");
+}
+
+// gets the relevant products for the checkboxes clicked
+function updateDietRestrictions(slct2) {
   var selectedOptions = [];
   var checkboxes = document.getElementsByName("diet");
   var s2 = document.getElementById(slct2);
@@ -59,11 +77,6 @@ function submitDietRestrictions(slct2) {
     var productContainer = createProductDiv(product);
     s2.appendChild(productContainer);
   }
-
-  // Switch to the "Products" tab
-  productTablink = document.getElementsByClassName("tablinks products");
-  productTablink.className += " active";
-  openInfo(event, "Products");
 }
 
 // Building each product tile
@@ -213,5 +226,5 @@ function onCategoryChange() {
   }
 
   selectedCategories = selectedOptions;
-  submitDietRestrictions('displayProduct');
+  submitDietRestrictions("displayProduct");
 }

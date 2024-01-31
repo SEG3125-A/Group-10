@@ -49,38 +49,63 @@
                 type="checkbox"
                 name="diet"
                 value="NONE"
-                onclick="handleNoneCheckbox(this)"
+                onclick="handleNoneCheckbox(this, 'displayProduct')"
               />
               None
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="diet" value="VEG" />
+              <input
+                type="checkbox"
+                name="diet"
+                value="VEG"
+                onclick="updateDietRestrictions('displayProduct')"
+              />
               Vegetarian
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="diet" value="GF" />
+              <input
+                type="checkbox"
+                name="diet"
+                value="GF"
+                onclick="updateDietRestrictions('displayProduct')"
+              />
               Gluten-free
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="diet" value="OR" />
+              <input
+                type="checkbox"
+                name="diet"
+                value="OR"
+                onclick="updateDietRestrictions('displayProduct')"
+              />
               Organic
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="diet" value="DB" />
+              <input
+                type="checkbox"
+                name="diet"
+                value="DB"
+                onclick="updateDietRestrictions('displayProduct')"
+              />
               Diabetic-friendly
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="diet" value="LF" />
+              <input
+                type="checkbox"
+                name="diet"
+                value="LF"
+                onclick="updateDietRestrictions('displayProduct')"
+              />
               Lactose-free
             </label>
           </div>
@@ -104,31 +129,66 @@
           <div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="Vegetable" id="inputVegetable" checked onclick="onCategoryChange()" value="on"/>
+                <input
+                  type="checkbox"
+                  name="Vegetable"
+                  id="inputVegetable"
+                  checked
+                  onclick="onCategoryChange()"
+                  value="on"
+                />
                 Vegetable
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="Fruits" id="inputFruits" checked onclick="onCategoryChange()" value="on"/>
+                <input
+                  type="checkbox"
+                  name="Fruits"
+                  id="inputFruits"
+                  checked
+                  onclick="onCategoryChange()"
+                  value="on"
+                />
                 Fruits
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="Meat" id="inputMeat" checked onclick="onCategoryChange()" value="on"/>
+                <input
+                  type="checkbox"
+                  name="Meat"
+                  id="inputMeat"
+                  checked
+                  onclick="onCategoryChange()"
+                  value="on"
+                />
                 Meat
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="Dairy" id="inputDairy" checked onclick="onCategoryChange()" value="on"/>
+                <input
+                  type="checkbox"
+                  name="Dairy"
+                  id="inputDairy"
+                  checked
+                  onclick="onCategoryChange()"
+                  value="on"
+                />
                 Dairy
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="Carbs" id="inputCarbs" checked onclick="onCategoryChange()" value="on"/>
+                <input
+                  type="checkbox"
+                  name="Carbs"
+                  id="inputCarbs"
+                  checked
+                  onclick="onCategoryChange()"
+                  value="on"
+                />
                 Carbs
               </label>
             </div>
