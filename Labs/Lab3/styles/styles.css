@@ -218,3 +218,18 @@ img {
   display: flex;
   justify-content: space-between;
 }
+
+.price input{
+  width: 20%;
+}
+.price{
+  font-size: medium;
+  text-align: left;
+  align-items: center;
+}
+
+.filterButton{
+  margin-top: 15px;
+  width: 75%;
+  cursor: pointer;
+}

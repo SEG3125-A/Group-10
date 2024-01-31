@@ -117,7 +117,6 @@ function restrictListProducts(prods, restrictions) {
         product_info.push(category_prods[i]);
     }
   }
-
   return product_info;
 }
 

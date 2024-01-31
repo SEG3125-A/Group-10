@@ -2,9 +2,9 @@
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 let cart = [];
 let selectedCategories = ["Fruit", "Meat", "Dairy", "Carbs", "Vegetable"];
+let currentOptions = [];
 
 function openInfo(evt, tabName) {
-  console.log(evt);
   // Get all elements with class="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -69,6 +69,7 @@ function updateDietRestrictions(slct2) {
 
   // obtain a reduced list of products based on restrictions and render them
   var optionArray = restrictListProducts(products, selectedOptions);
+  currentOptions = optionArray; 
 
   for (i = 0; i < optionArray.length; i++) {
     var product = optionArray[i];
@@ -77,6 +78,72 @@ function updateDietRestrictions(slct2) {
     var productContainer = createProductDiv(product);
     s2.appendChild(productContainer);
   }
+}
+
+function searchProducts(){
+  submitDietRestrictions("displayProduct");
+  let searchContent = document.getElementById("SearchContent").value; 
+  let tempCurrentOptions = []; 
+  let minPrice = document.getElementById("min").value;
+  let maxPrice = document.getElementById("max").value;
+  let filterMin = false; 
+  let filterMax = false;
+
+  if(minPrice){filterMin = true;}
+  if(maxPrice){filterMax = true;}
+
+  var s2 = document.getElementById("displayProduct");
+
+  if(searchContent){
+    s2.innerHTML = "";
+    currentOptions.forEach(function (product){
+      console.log(product.name.toLowerCase());
+      console.log(searchContent.toLowerCase());
+      console.log(product.name.toLowerCase().startsWith(searchContent.toLowerCase()));
+      if(product.name.toLowerCase().startsWith(searchContent.toLowerCase())){
+        tempCurrentOptions.push(product);
+      }
+    });
+    currentOptions = tempCurrentOptions; 
+  }
+  else{
+    submitDietRestrictions("displayProduct");
+
+  }
+  
+  if(filterMax || filterMin){
+    s2.innerHTML = "";
+    if(filterMin && filterMax){
+      tempCurrentOptions = []; 
+      currentOptions.forEach(function (product){
+        if( (product.price > minPrice) && (product.price < maxPrice) ){
+          tempCurrentOptions.push(product);
+        }
+      });
+    }
+    else if(filterMax){
+      tempCurrentOptions = []; 
+      currentOptions.forEach(function (product){
+        if( (product.price < maxPrice) ){
+          tempCurrentOptions.push(product);
+        }
+      });
+    }
+    else {
+      tempCurrentOptions = []; 
+      currentOptions.forEach(function (product){
+        if( (product.price > minPrice) ){
+          tempCurrentOptions.push(product);
+        }
+      });
+    }
+    currentOptions = tempCurrentOptions; 
+  }
+
+  currentOptions.forEach(function (product){
+    var productContainer = createProductDiv(product);
+    s2.appendChild(productContainer);
+});
 }
 
 // Building each product tile
@@ -134,7 +201,6 @@ function createProductDiv(product) {
 // handles the clicking of 'Add to Cart'
 function toggleCartStatus(button, product, quantity) {
   var notification = document.getElementById("notification");
-  console.log(product);
 
   if (button.innerText === "Add to Cart") {
     cart.push([product, quantity]);
@@ -200,7 +266,6 @@ function sortByPrice(itemA, itemB) {
 }
 
 function onCategoryChange() {
-  console.log("Category changed");
 
   const inputVegetable = document.getElementById("inputVegetable");
   const inputFruit = document.getElementById("inputFruits");
