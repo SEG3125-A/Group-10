@@ -116,7 +116,7 @@ function searchProducts(){
     if(filterMin && filterMax){
       tempCurrentOptions = []; 
       currentOptions.forEach(function (product){
-        if( (product.price > minPrice) && (product.price < maxPrice) ){
+        if( (product.price >= minPrice) && (product.price <= maxPrice) ){
           tempCurrentOptions.push(product);
         }
       });
@@ -124,7 +124,7 @@ function searchProducts(){
     else if(filterMax){
       tempCurrentOptions = []; 
       currentOptions.forEach(function (product){
-        if( (product.price < maxPrice) ){
+        if( (product.price <= maxPrice) ){
           tempCurrentOptions.push(product);
         }
       });
@@ -132,7 +132,7 @@ function searchProducts(){
     else {
       tempCurrentOptions = []; 
       currentOptions.forEach(function (product){
-        if( (product.price > minPrice) ){
+        if( (product.price >= minPrice) ){
           tempCurrentOptions.push(product);
         }
       });
@@ -301,4 +301,6 @@ function updatePriceRange() {
   let maxPriceQuote = "Maximum Price: " + maxPrice + "$";
   document.getElementById("MinPrice").innerHTML = minPriceQuote;
   document.getElementById("MaxPrice").innerHTML = maxPriceQuote;
+
+  searchProducts();
 }
