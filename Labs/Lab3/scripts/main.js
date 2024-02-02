@@ -293,3 +293,12 @@ function onCategoryChange() {
   selectedCategories = selectedOptions;
   submitDietRestrictions("displayProduct");
 }
+
+function updatePriceRange() {
+  var minPrice = document.getElementById("min").value;
+  var maxPrice = document.getElementById("max").value;
+  let minPriceQuote = "Minimum Price: " + minPrice + "$";
+  let maxPriceQuote = "Maximum Price: " + maxPrice + "$";
+  document.getElementById("MinPrice").innerHTML = minPriceQuote;
+  document.getElementById("MaxPrice").innerHTML = maxPriceQuote;
+}

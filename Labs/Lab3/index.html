@@ -125,7 +125,14 @@
         <aside>
           <div > <h3> Search <br> <input type="text" id="SearchContent" placeholder="search...">  </h3></div>
           <h3>Price Filter <br></h3>
-          <div class="price"> <input type="number" id="min" placeholder="Min"> up to  <input type="number" id="max" placeholder="Max"></div> 
+          <div class="price">
+            <div id="MinPrice">Minimum Price: 0$</div> 
+            <input type="range" id="min" min="0" max="15" value="0" placeholder="Min" style="width: 100%;" onchange="updatePriceRange()">
+          </div> 
+          <div class="price"> 
+            <div id="MaxPrice">Maximum Price: 15$</div> 
+            <input type="range" id="max" min="0" max="15" value="15" placeholder="Max" style="width: 100%;" onchange="updatePriceRange()">
+          </div>
           <div class="submitFilter"> <button type="button" class="filterButton" onclick="searchProducts()">Filter</button></div>
           <h3>Categories</h3>
           <div>
