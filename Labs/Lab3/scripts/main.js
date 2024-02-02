@@ -81,65 +81,46 @@ function updateDietRestrictions(slct2) {
 }
 
 function searchProducts(){
-  submitDietRestrictions("displayProduct");
+  var selectedOptions = [];
+  var checkboxes = document.getElementsByName("diet");
+  var s2 = document.getElementById('displayProduct');
+  s2.innerHTML = "";
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      selectedOptions.push(checkboxes[i].value);
+    }
+  }
+
   let searchContent = document.getElementById("SearchContent").value; 
-  let tempCurrentOptions = []; 
+  let tempCurrentOptions = restrictListProducts(products, selectedOptions);
   let minPrice = document.getElementById("min").value;
   let maxPrice = document.getElementById("max").value;
-  let filterMin = false; 
-  let filterMax = false;
-
-  if(minPrice){filterMin = true;}
-  if(maxPrice){filterMax = true;}
 
   var s2 = document.getElementById("displayProduct");
 
-  if(searchContent){
-    s2.innerHTML = "";
+  if (searchContent && searchContent.length > 0) {
+    currentOptions = tempCurrentOptions;
+    tempCurrentOptions = [];
     currentOptions.forEach(function (product){
       console.log(product.name.toLowerCase());
       console.log(searchContent.toLowerCase());
       console.log(product.name.toLowerCase().startsWith(searchContent.toLowerCase()));
-      if(product.name.toLowerCase().startsWith(searchContent.toLowerCase())){
+      if (product.name.toLowerCase().startsWith(searchContent.toLowerCase())) {
         tempCurrentOptions.push(product);
       }
     });
-    currentOptions = tempCurrentOptions; 
-  }
-  else{
-    submitDietRestrictions("displayProduct");
-
-  }
-  
-  if(filterMax || filterMin){
-    s2.innerHTML = "";
-    if(filterMin && filterMax){
-      tempCurrentOptions = []; 
-      currentOptions.forEach(function (product){
-        if( (product.price >= minPrice) && (product.price <= maxPrice) ){
-          tempCurrentOptions.push(product);
-        }
-      });
-    }
-    else if(filterMax){
-      tempCurrentOptions = []; 
-      currentOptions.forEach(function (product){
-        if( (product.price <= maxPrice) ){
-          tempCurrentOptions.push(product);
-        }
-      });
-    }
-    else {
-      tempCurrentOptions = []; 
-      currentOptions.forEach(function (product){
-        if( (product.price >= minPrice) ){
-          tempCurrentOptions.push(product);
-        }
-      });
-    }
-    currentOptions = tempCurrentOptions; 
   }
 
+  currentOptions = tempCurrentOptions; 
+  tempCurrentOptions = [];
+  currentOptions.forEach(function (product){
+    if( (product.price >= minPrice) && (product.price <= maxPrice) ){
+      tempCurrentOptions.push(product);
+    }
+  });
+
+  currentOptions = tempCurrentOptions;
   currentOptions.forEach(function (product){
     var productContainer = createProductDiv(product);
     s2.appendChild(productContainer);
@@ -291,7 +272,7 @@ function onCategoryChange() {
   }
 
   selectedCategories = selectedOptions;
-  submitDietRestrictions("displayProduct");
+  searchProducts();
 }
 
 function updatePriceRange() {
