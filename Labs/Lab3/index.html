@@ -26,7 +26,7 @@
       <ul class="breadcrumb">
         <li>
           <a href="#" class="tablinks" onclick="openInfo(event, 'Client')"
-            >Client</a
+            >Preferences</a
           >
         </li>
         <li>
@@ -47,9 +47,10 @@
 
     <!-- Tab content -->
     <div id="Client" class="tabcontent client-info">
-      <h3>Client Information</h3>
-      <p>Tell us a bit about you.</p>
-      Choose a Category:
+      <h3>Dietary Preferences</h3>
+      <p>Welcome to Mam's Groceries!</p>
+      Please select your dietary preferences (if any) to view our available
+      products:
       <form id="dietForm">
         <div class="checkbox-container">
           <div class="checkbox">
@@ -141,8 +142,18 @@
     <div id="Products" class="tabcontent">
       <main class="main">
         <aside class="sidebar">
-          <div > <h3> Search <br> <input type="text" id="SearchContent" placeholder="search..." onchange="searchProducts()">  </h3></div>
-          <h3>Price Filter <br></h3>
+          <div>
+            <h3>
+              Search <br />
+              <input
+                type="text"
+                id="SearchContent"
+                placeholder="search..."
+                onchange="searchProducts()"
+              />
+            </h3>
+          </div>
+          <h3>Price Filter <br /></h3>
           <div class="price">
             <div id="MinPrice">Minimum Price: 0$</div> 
             <input type="range" id="min" min="0" max="15" value="0" placeholder="Min" style="width: 100%;" onchange="updatePriceRange()">

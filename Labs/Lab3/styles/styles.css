@@ -94,6 +94,7 @@ ul.breadcrumb li a:hover {
 
 .tablinks.active {
   color: #01447e;
+  font-weight: bold;
 }
 
 .checkbox-container {
