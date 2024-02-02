@@ -4,6 +4,18 @@ body {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
 }
+header {
+  text-align: left;
+  font-family: "Caveat", cursive;
+  background-color: rgb(6, 122, 70); /* Set your desired background color */
+  color: white; /* Set your desired text color */
+  padding: 15px 10px; /* Adjust padding as needed */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em; /* Adjust font size as needed */
+}
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -49,9 +61,10 @@ body {
 }
 /* Style the list */
 ul.breadcrumb {
-  padding: 10px 16px;
+  padding: 0px 10px;
   list-style: none;
   background-color: #eee;
+  text-align: center;
 }
 
 /* Display list items side by side */
@@ -220,16 +233,16 @@ img {
   justify-content: space-between;
 }
 
-.price input{
+.price input {
   width: 20%;
 }
-.price{
+.price {
   font-size: medium;
   text-align: left;
   align-items: center;
 }
 
-.filterButton{
+.filterButton {
   margin-top: 15px;
   width: 75%;
   cursor: pointer;

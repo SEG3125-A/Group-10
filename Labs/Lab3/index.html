@@ -8,10 +8,19 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Coiny&family=Sono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
+    <header>
+      <h1>MAM's Groceries</h1>
+    </header>
     <!-- Tab links, each one with an onclick event associated with it -->
     <div class="tab">
       <ul class="breadcrumb">
@@ -123,17 +132,48 @@
     <div id="Products" class="tabcontent">
       <main class="main">
         <aside>
-          <div > <h3> Search <br> <input type="text" id="SearchContent" placeholder="search...">  </h3></div>
-          <h3>Price Filter <br></h3>
-          <div class="price">
-            <div id="MinPrice">Minimum Price: 0$</div> 
-            <input type="range" id="min" min="0" max="15" value="0" placeholder="Min" style="width: 100%;" onchange="updatePriceRange()">
-          </div> 
-          <div class="price"> 
-            <div id="MaxPrice">Maximum Price: 15$</div> 
-            <input type="range" id="max" min="0" max="15" value="15" placeholder="Max" style="width: 100%;" onchange="updatePriceRange()">
+          <div>
+            <h3>
+              Search <br />
+              <input type="text" id="SearchContent" placeholder="search..." />
+            </h3>
           </div>
-          <div class="submitFilter"> <button type="button" class="filterButton" onclick="searchProducts()">Filter</button></div>
+          <h3>Price Filter <br /></h3>
+          <div class="price">
+            <div id="MinPrice">Minimum Price: 0$</div>
+            <input
+              type="range"
+              id="min"
+              min="0"
+              max="15"
+              value="0"
+              placeholder="Min"
+              style="width: 100%"
+              onchange="updatePriceRange()"
+            />
+          </div>
+          <div class="price">
+            <div id="MaxPrice">Maximum Price: 15$</div>
+            <input
+              type="range"
+              id="max"
+              min="0"
+              max="15"
+              value="15"
+              placeholder="Max"
+              style="width: 100%"
+              onchange="updatePriceRange()"
+            />
+          </div>
+          <div class="submitFilter">
+            <button
+              type="button"
+              class="filterButton"
+              onclick="searchProducts()"
+            >
+              Filter
+            </button>
+          </div>
           <h3>Categories</h3>
           <div>
             <div class="checkbox">
