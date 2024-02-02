@@ -69,7 +69,7 @@ function updateDietRestrictions(slct2) {
 
   // obtain a reduced list of products based on restrictions and render them
   var optionArray = restrictListProducts(products, selectedOptions);
-  currentOptions = optionArray; 
+  currentOptions = optionArray;
 
   for (i = 0; i < optionArray.length; i++) {
     var product = optionArray[i];
@@ -80,10 +80,10 @@ function updateDietRestrictions(slct2) {
   }
 }
 
-function searchProducts(){
+function searchProducts() {
   var selectedOptions = [];
   var checkboxes = document.getElementsByName("diet");
-  var s2 = document.getElementById('displayProduct');
+  var s2 = document.getElementById("displayProduct");
   s2.innerHTML = "";
 
   for (var i = 0; i < checkboxes.length; i++) {
@@ -92,7 +92,7 @@ function searchProducts(){
     }
   }
 
-  let searchContent = document.getElementById("SearchContent").value; 
+  let searchContent = document.getElementById("SearchContent").value;
   let tempCurrentOptions = restrictListProducts(products, selectedOptions);
   let minPrice = document.getElementById("min").value;
   let maxPrice = document.getElementById("max").value;
@@ -102,29 +102,31 @@ function searchProducts(){
   if (searchContent && searchContent.length > 0) {
     currentOptions = tempCurrentOptions;
     tempCurrentOptions = [];
-    currentOptions.forEach(function (product){
+    currentOptions.forEach(function (product) {
       console.log(product.name.toLowerCase());
       console.log(searchContent.toLowerCase());
-      console.log(product.name.toLowerCase().startsWith(searchContent.toLowerCase()));
+      console.log(
+        product.name.toLowerCase().startsWith(searchContent.toLowerCase())
+      );
       if (product.name.toLowerCase().startsWith(searchContent.toLowerCase())) {
         tempCurrentOptions.push(product);
       }
     });
   }
 
-  currentOptions = tempCurrentOptions; 
+  currentOptions = tempCurrentOptions;
   tempCurrentOptions = [];
-  currentOptions.forEach(function (product){
-    if( (product.price >= minPrice) && (product.price <= maxPrice) ){
+  currentOptions.forEach(function (product) {
+    if (product.price >= minPrice && product.price <= maxPrice) {
       tempCurrentOptions.push(product);
     }
   });
 
   currentOptions = tempCurrentOptions;
-  currentOptions.forEach(function (product){
+  currentOptions.forEach(function (product) {
     var productContainer = createProductDiv(product);
     s2.appendChild(productContainer);
-});
+  });
 }
 
 // Building each product tile
@@ -206,7 +208,7 @@ function toggleCartStatus(button, product, quantity) {
 }
 
 function populateCart(cart) {
-  const cartContainer = document.getElementById("Cart");
+  const cartContainer = document.getElementById("displayCart");
   cartContainer.innerHTML = "";
   subtotal = 0;
 
@@ -215,31 +217,52 @@ function populateCart(cart) {
   } else {
     const productList = document.createElement("ul");
     cart.forEach(function ([product, quantity]) {
-      const listItem = createProductListItem(product, quantity);
-      productList.appendChild(listItem);
+      const listItem = createCartRowItem(product, quantity);
+      cartContainer.appendChild(listItem);
     });
-    cartContainer.appendChild(productList);
+
     cart.forEach(function ([product, quantity]) {
       subtotal += product.price * quantity;
     });
-    const subtotalElement = document.createElement("p");
-    subtotalElement.textContent = `Total: $${subtotal.toFixed(2)}`;
-    cartContainer.appendChild(subtotalElement);
+    // Create the "Total" row
+    const totalRow = createTotalRow(subtotal);
+    cartContainer.appendChild(totalRow);
   }
 }
 
-function createProductListItem(product, quantity) {
-  const listItem = document.createElement("li");
-  const productName = document.createElement("span");
+function createCartRowItem(product, quantity) {
+  const listItem = document.createElement("tr");
+  const productName = document.createElement("td");
   productName.textContent = product.name;
   listItem.appendChild(productName);
-  const quantityAndPrice = document.createElement("span");
-  listItem.appendChild(quantityAndPrice);
+  const quantityAndPrice = document.createElement("td");
   quantityAndPrice.textContent = quantity + " x $" + product.price;
-  const productPrice = document.createElement("span");
+  listItem.appendChild(quantityAndPrice);
+  const productPrice = document.createElement("td");
   productPrice.textContent = `$${(product.price * quantity).toFixed(2)}`;
   listItem.appendChild(productPrice);
   return listItem;
+}
+
+function createTotalRow(total) {
+  const totalRow = document.createElement("tr");
+
+  // Blank cell
+  const blankCell = document.createElement("td");
+  totalRow.appendChild(blankCell);
+
+  // "Total" cell in bold
+  const totalLabelCell = document.createElement("td");
+  totalLabelCell.textContent = "Total";
+  totalLabelCell.style.fontWeight = "bold";
+  totalRow.appendChild(totalLabelCell);
+  // Total price cell
+  const totalPriceCell = document.createElement("td");
+  totalPriceCell.textContent = `$${total.toFixed(2)}`;
+  totalPriceCell.style.fontWeight = "bold";
+  totalRow.appendChild(totalPriceCell);
+
+  return totalRow;
 }
 
 function sortByPrice(itemA, itemB) {
@@ -247,7 +270,6 @@ function sortByPrice(itemA, itemB) {
 }
 
 function onCategoryChange() {
-
   const inputVegetable = document.getElementById("inputVegetable");
   const inputFruit = document.getElementById("inputFruits");
   const inputMeat = document.getElementById("inputMeat");
