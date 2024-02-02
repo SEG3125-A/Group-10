@@ -4,6 +4,13 @@ let cart = [];
 let selectedCategories = ["Fruit", "Meat", "Dairy", "Carbs", "Vegetable"];
 let currentOptions = [];
 
+function openPreferencesTab() {
+  document.querySelector('.tablinks[href="#Preferences"]').click();
+}
+
+// Add an event listener to run the function after the page has loaded
+window.addEventListener("load", openPreferencesTab);
+
 function openInfo(evt, tabName) {
   // Get all elements with class="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -17,6 +24,9 @@ function openInfo(evt, tabName) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
 
+  if (tabName == "Products") {
+    updateDietRestrictions("displayProduct");
+  }
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
