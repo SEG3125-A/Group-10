@@ -71,6 +71,7 @@
                 value="VEG"
                 onclick="updateDietRestrictions('displayProduct')"
               />
+              <img src="assets/Veg.png" alt="Logo" class="logo" />
               Vegetarian
             </label>
           </div>
@@ -82,6 +83,7 @@
                 value="GF"
                 onclick="updateDietRestrictions('displayProduct')"
               />
+              <img src="assets/GF.png" alt="Logo" class="logo" />
               Gluten-free
             </label>
           </div>
@@ -93,6 +95,7 @@
                 value="OR"
                 onclick="updateDietRestrictions('displayProduct')"
               />
+              <img src="assets/Organic.png" alt="Logo" class="logo" />
               Organic
             </label>
           </div>
@@ -104,6 +107,8 @@
                 value="DB"
                 onclick="updateDietRestrictions('displayProduct')"
               />
+              <img src="assets/Diabetes.png" alt="Logo" class="logo" />
+
               Diabetic-friendly
             </label>
           </div>
@@ -115,18 +120,22 @@
                 value="LF"
                 onclick="updateDietRestrictions('displayProduct')"
               />
+              <img src="assets/lactose.png" alt="Logo" class="logo" />
+
               Lactose-free
             </label>
           </div>
         </div>
       </form>
-      <button
-        type="button"
-        class="add-to-cart-button"
-        onclick="submitDietRestrictions('displayProduct')"
-      >
-        View Products
-      </button>
+      <div class="add-to-cart-button-container">
+        <button
+          type="button"
+          class="add-to-cart-button"
+          onclick="submitDietRestrictions('displayProduct')"
+        >
+          View Products
+        </button>
+      </div>
     </div>
 
     <div id="Products" class="tabcontent">
