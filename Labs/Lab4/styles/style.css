@@ -1,0 +1,44 @@
+
+/* Style sheet
+   color picker www.w3schools.com/colors/colors_picker.asp
+*/
+
+.main-container {
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: #86DC3D;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.sub-header {
+  padding-top: 3%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.btn-primary {
+  background-color: #86DC3D;
+  border: none;
+  color: antiquewhite;
+}
+
+.btn-primary:hover {
+  background-color: #5FAD56;
+  color: antiquewhite;
+}
+
+.btn-primary:active {
+  background-color: #5FAD56;
+  color: antiquewhite;
+}
+
+.btn-primary:focus {
+  background-color: #5FAD56;
+  color: antiquewhite;
+}

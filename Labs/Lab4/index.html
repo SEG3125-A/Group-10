@@ -1,0 +1,141 @@
+<!-- This file contains many elements adapted from the online tutoral -->
+<!-- on Bootstrap 4 as found here: https://www.w3schools.com/bootstrap4/default.asp -->
+
+<!-- Images source: -->
+<!-- jule.jpg taken from https://www.freepik.com/premium-vector/cartoon-successful-hairdresser_3951066.htm -->
+<!-- Erwind.jpb https://www.kijiji.ca/v-construction-trades-jobs/winnipeg/bicycle-mechanic/1499188319 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <!-- The head should contain an appropriate title for your site -->
+  <head>
+    <title>Module 4 - Labo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Style sheet (CSS) and JavaScript scripts necessary to use Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- Your own additional style sheet -->
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="d-flex flex-row header">
+        <img src="images/BikeLogo.png" style="width: 10%" />
+        <div class="px-5 align-center my-auto">
+          <h1 class="my-auto">Bike Repair Shop</h1>
+        </div>
+      </div>
+      <div class="sub-header" id="Page-Name">
+        <h1>Services</h1>
+      </div>
+      <div class="container" id="Service-Select">
+        <div class="row">
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img src="images/FlatTire.jpeg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Flat Tire</h5>
+                <p class="card-text">Repair a flat tire on your bike.</p>
+                <p class="card-text">Mechanic: Josh</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img
+                src="images/Suspension.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Suspension Maintenance</h5>
+                <p class="card-text">Change the fluids and clean suspension.</p>
+                <p class="card-text">Mechanic: Josh</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img src="images/Cleaning.jpeg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bike cleaning</h5>
+                <p class="card-text">Complete cleaning of your bike.</p>
+                <p class="card-text">Mechanic: Tom</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img
+                src="images/Derailleur.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Derailleur Adjustment</h5>
+                <p class="card-text">Adjust the gear shifting on your bike.</p>
+                <p class="card-text">Mechanic: Tom</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img src="images/disk.jpeg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Disk Break Replacement</h5>
+                <p class="card-text">Replace pads and disks on your brakes.</p>
+                <p class="card-text">Mechanic: Steve</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card my-4" style="width: 18rem">
+              <img src="images/parts.jpeg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Bike assembly</h5>
+                <p class="card-text">Assemble a bike from scratch.</p>
+                <p class="card-text">Mechanic: Josh</p>
+                <a class="btn btn-primary" onclick="navigateTo('Time-Select');"
+                  >Go somewhere</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Time-Select">
+        <p>TODO</p>
+        <a class="btn btn-primary" onclick="navigateTo('Service-Select');"
+          >Go back</a
+        >
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
