@@ -30,4 +30,8 @@ function navigateTo(pageId) {
     } else {
         console.error(`Page with id ${pageId} not found`);
     }
+
+    // Update the sub header
+    const subHeader = document.getElementById("Page-Name");
+    subHeader.innerText = page.title;
 }
