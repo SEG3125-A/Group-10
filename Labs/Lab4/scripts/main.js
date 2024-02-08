@@ -5,6 +5,9 @@ const pages = [{
 }, {
     id: 'Time-Select',
     title: 'Select time of appointment',
+}, {
+    id: 'Personal-Info',
+    title: 'Personal Information',
 }];
 
 function navigateTo(pageId) {

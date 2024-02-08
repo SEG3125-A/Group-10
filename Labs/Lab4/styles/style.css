@@ -1,4 +1,3 @@
-
 /* Style sheet
    color picker www.w3schools.com/colors/colors_picker.asp
 */
@@ -41,4 +40,8 @@
 .btn-primary:focus {
   background-color: #5FAD56;
   color: antiquewhite;
+}
+
+.form-control {
+  width: 25vmax;
 }
