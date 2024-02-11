@@ -1,0 +1,223 @@
+<!-- This file contains many elements adapted from the online tutoral -->
+<!-- on Bootstrap 4 as found here: https://www.w3schools.com/bootstrap4/default.asp -->
+
+<!-- Images source: -->
+<!-- jule.jpg taken from https://www.freepik.com/premium-vector/cartoon-successful-hairdresser_3951066.htm -->
+<!-- Erwind.jpb https://www.kijiji.ca/v-construction-trades-jobs/winnipeg/bicycle-mechanic/1499188319 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- The head should contain an appropriate title for your site -->
+
+<head>
+  <title>Module 4 - Labo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Style sheet (CSS) and JavaScript scripts necessary to use Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- Your own additional style sheet -->
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="d-flex flex-row header">
+      <img src="images/BikeLogo.png" style="width: 10%" />
+      <div class="px-5 align-center my-auto">
+        <h1 class="my-auto">Bike Repair Shop</h1>
+      </div>
+      <div class="px-5 align-right my-auto">
+        <p class="my-auto">675 Boulevard Saint-Joseph, Gatineau, Quebec J8Y 4B4</p>
+      </div>
+    </div>
+    <div class="sub-header">
+      <h1 id="Page-Name">Services</h1>
+    </div>
+    <div class="container" id="Service-Select">
+      <div class="row">
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/FlatTire.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Flat Tire</h5>
+              <p class="card-text">Repair a flat tire on your bike.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 20$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Suspension.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Suspension Maintenance</h5>
+              <p class="card-text">Change the fluids and clean suspension.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 40$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Cleaning.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Bike cleaning</h5>
+              <p class="card-text">Complete cleaning of your bike.</p>
+              <p class="card-text">Mechanic: Tom</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 15$</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Derailleur.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Derailleur Adjustment</h5>
+              <p class="card-text">Adjust the gear shifting on your bike.</p>
+              <p class="card-text">Mechanic: Tom</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 25$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/disk.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Disk Break Replacement</h5>
+              <p class="card-text">Replace pads and disks on your brakes.</p>
+              <p class="card-text">Mechanic: Steve</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 45$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/parts.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Bike assembly</h5>
+              <p class="card-text">Assemble a bike from scratch.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 90$</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="Time-Select" style="display: none;">
+      <div class="form-group" style="margin-top:3vh; margin-left: 5vmax;">
+        <label for="dateTimeInput" style="margin-bottom: 2vmax; font-size: 1.5vmax;">When would you like to come
+          in?</label>
+        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput">
+        <a class="btn btn-primary" style="margin-top: 5vmax;" onclick="navigateTo('Service-Select');">Go
+          back</a>
+        <a class="btn btn-primary" style="margin-top: 5vmax; margin-left: 15vmax;"
+          onclick="navigateTo('Personal-Info');">
+          Next >
+        </a>
+      </div>
+    </div>
+    <div id="Personal-Info" style="display: none;">
+
+      <div class="container">
+        <form class="was-validated">
+          <div class="form-group">
+            <label for="uname">Name:</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter full name" name="uname" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email address" name="email" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Time-Select');">Go back</a>
+          <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Payment-Submit')"> Next > </a>
+      </div>
+      </form>
+    </div>
+
+
+    <div id="Payment-Submit" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <form class="was-validated">
+              <div class="form-group">
+                <label for="Card">Credit Card number</label>
+                <input type="numeric" pattern="[0-9\s]{13,16}" class="form-control" id="Card"
+                  placeholder="Enter Credit Card Number" maxlength="16" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback" style="font-weight: bolder; font-size: large;"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="CVV">Security Code (CVV)</label>
+                <input type="text" pattern="[0-9\s]{3,4}" class="form-control" id="CVV" placeholder="CVV" maxlength="4"
+                  required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback" style="font-weight: bolder; font-size: large;"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="Expiry">Expiry Date</label>
+                <div class="d-flex">
+                  <input type="text" class="form-control col-2 mr-2" id="Month" placeholder="MM" pattern="[0-9\s]{2}"
+                    maxlength="2" required>
+                  <input type="text" class="form-control col-2" id="Year" pattern="[0-9\s]{2}" placeholder="YY"
+                    maxlength="2" required>
+                </div>
+                <div id="expVal" style="color: red; font-weight: bolder; font-size: large;"></div>
+              </div>
+              <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Personal-Info');">Go back</a>
+              <a style="margin-top: 1vmax; margin-left: 15vmax;" class="btn btn-primary" id="submit"> Submit </a>
+            </form>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <h2>Summary</h2>
+            <h6>Please review the information below:</h6>
+            <strong>Service Selected:</strong> <!-- Add service name here --></p>
+            <p><strong>Time:</strong> <!-- Add selected time here --></p>
+            <p><strong>Name:</strong> <!-- Add personal info details here --></p>
+            <p><strong>Phone Number:</strong> <!-- Add personal info details here --></p>
+            <p><strong>Email:</strong> <!-- Add personal info details here --></p>
+
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  </div>
+  </div>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
