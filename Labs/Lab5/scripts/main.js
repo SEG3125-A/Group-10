@@ -14,6 +14,8 @@ const pages = [{
     title: 'Payment and confirmation',
 }];
 
+// The stage of the navigation
+let stage = 0;
 
 function navigateTo(pageId) {
     const page = pages.find(p => p.id === pageId);
@@ -42,6 +44,39 @@ function navigateTo(pageId) {
     // Update the sub header
     const subHeader = document.getElementById("Page-Name");
     subHeader.innerText = page.title;
+
+    // Update the stage
+    let newStage = pages.findIndex(p => p.id === pageId);
+    if (newStage > stage) {
+        stage = newStage;
+    }
+
+    console.log(`Stage: ${stage}`);
+    console.log(`New Stage: ${newStage}`);
+
+    // Update the navigation buttons disabled state
+    let i = 0;
+    for (i = 0; i <= stage; i++) {
+        const button = document.getElementById(`nav-${i}`);
+        if (button) {
+            button.disabled = false;
+        }
+    }
+
+    // Update button backgroud color
+    for (i = 0; i < pages.length; i++) {
+        const button = document.getElementById(`nav-${i}`);
+        if (button) {
+            button.style.backgroundColor = "lightgray";
+        }
+    }
+
+    for (i = 0; i <= newStage; i++) {
+        const button = document.getElementById(`nav-${i}`);
+        if (button) {
+            button.style.backgroundColor = "#86DC3D";
+        }
+    }
 }
 
 
