@@ -134,24 +134,27 @@
         <form class="was-validated">
           <div class="form-group">
             <label for="uname">Name:</label>
-            <input type="text" class="form-control" id="uname" placeholder="Enter full name" name="uname" required>
+            <input type="text" class="form-control" id="uname" placeholder="Enter full name" name="uname"
+              pattern="^(\w\w+)\s(\w+)$" required>
             <div class="valid-feedback"></div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Enter email address" name="email" required>
+            <input type="email" class="form-control" id="email" placeholder="Enter email address"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" name="email" required>
             <div class="valid-feedback"></div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="phone">Phone number</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required>
+            <input type="text" class="form-control" id="phone" maxlength="10" pattern="[0-9]{10}"
+              placeholder="Enter phone number" name="phone" required>
             <div class="valid-feedback"></div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback"></div>
           </div>
           <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Time-Select');">Go back</a>
-          <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Payment-Submit')"> Next > </a>
+          <a style="margin-top: 1vmax; margin-left: 14vmax;" id="toPayment" class="btn btn-primary"> Next > </a>
       </div>
       </form>
     </div>
@@ -159,6 +162,10 @@
 
     <div id="Payment-Submit" style="display: none;">
       <div class="container">
+        <h7>Subtotal: $<span id="subtotal"> </span> </h7>
+        <br />
+        <h7>Tax: $<span id="tax"> </span> </h7>
+        <h2>Total: $<span id="Total"> </span></h2>
         <div class="row">
           <div class="col-md-6">
             <form class="was-validated">
@@ -188,24 +195,23 @@
                 </div>
                 <div id="expVal" style="color: red; font-weight: bolder; font-size: large;"></div>
               </div>
-              <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Personal-Info');">Go back</a>
+              <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Personal-Info');">Go
+                back</a>
               <a style="margin-top: 1vmax; margin-left: 15vmax;" class="btn btn-primary" id="submit"> Submit </a>
             </form>
           </div>
 
           <div class="col-md-6 mb-4">
-            <h2>Summary</h2>
+            <h2>Your Information:</h2>
             <h6>Please review the information below:</h6>
-            <strong>Service Selected:</strong> <!-- Add service name here --></p>
-            <p><strong>Time:</strong> <!-- Add selected time here --></p>
-            <p><strong>Name:</strong> <!-- Add personal info details here --></p>
-            <p><strong>Phone Number:</strong> <!-- Add personal info details here --></p>
-            <p><strong>Email:</strong> <!-- Add personal info details here --></p>
+            <p><strong>Service Selected:</strong> <span id="ServiceSelectedSumm"> </span> </p>
+            <p><strong>Time:</strong> <span id="TimeSelectedSumm"> </span> </p>
+            <p><strong>Name:</strong> <span id="NameSummary"> </span> </p>
+            <p><strong>Phone Number:</strong> <span id="PhoneSummary"> </span></p>
+            <p><strong>Email:</strong> <span id="EmailSummary"> </span></p>
 
 
           </div>
-
-
 
         </div>
 

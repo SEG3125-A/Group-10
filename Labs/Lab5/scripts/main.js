@@ -46,6 +46,63 @@ function navigateTo(pageId) {
 
 
 $(document).ready(function () {
+
+    $("#toPayment").click(function () {
+
+        var ValidName = false;
+        var ValidEmail = false;
+        var ValidPhone = false;
+        var validData = false;
+
+        var name = $('#uname').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+
+        if (name.match("([A-Za-z]{2,16})([ ]{0,1})([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})")) {
+            ValidName = true;
+            $('#uname').removeClass('is-invalid').addClass('is-valid');
+            $('#uname').siblings('.invalid-feedback').text("");
+        }
+        else {
+            $('#uname').removeClass('is-valid').addClass('is-invalid');
+            $('#uname').siblings('.invalid-feedback').text("Please enter your Full Name.");
+            return;
+        }
+
+        if (email.match('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')) {
+            ValidEmail = true;
+            $('#email').removeClass('is-invalid').addClass('is-valid');
+            $('#email').siblings('.invalid-feedback').text("");
+        }
+        else {
+            $('#email').removeClass('is-valid').addClass('is-invalid');
+            $('#email').siblings('.invalid-feedback').text("Please enter a valid email address.");
+            return;
+        }
+
+        if (phone.match('[0-9]{10}')) {
+            ValidPhone = true;
+            $('#phone').removeClass('is-invalid').addClass('is-valid');
+            $('#phone').siblings('.invalid-feedback').text("");
+        }
+        else {
+            $('#phone').removeClass('is-valid').addClass('is-invalid');
+            $('#phone').siblings('.invalid-feedback').text("Please enter a valid Phone Number.");
+            return;
+        }
+
+        setTimeout(function () {
+            validData = ValidPhone && ValidEmail && ValidName;
+            if (validData) {
+                $('#NameSummary').text(name);
+                $('#PhoneSummary').text(phone);
+                $('#EmailSummary').text(email);
+                navigateTo('Payment-Submit');
+            }
+        }, 100);
+    });
+
+
     $('#submit').click(function () {
         // Validate Credit Card Number
         var creditCardNumber = $('#Card').val();
