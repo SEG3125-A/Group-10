@@ -49,6 +49,7 @@
     <div class="sub-header">
       <h1 id="Page-Name">Services</h1>
     </div>
+    <section id="Service-Select" class="section">
     <div class="container" id="Service-Select">
       <div class="row">
         <div class="col">
@@ -121,8 +122,15 @@
         </div>
       </div>
     </div>
-    <div id="Time-Select" style="display: none;">
-      <div class="form-group" style="margin-top:3vh; margin-left: 5vmax;">
+  </section>
+
+  <section id="Time-Select" class="section">
+    <div class="sub-header">
+      <h1 id="Page-Name">Select Time</h1>
+    </div>
+    <div class="container">
+    <div id="Time-Select">
+      <div class="form-group" style="margin-top:3vh; margin-left: 1vmax;">
         <label for="dateTimeInput" style="margin-bottom: 2vmax; font-size: 1.5vmax;">When would you like to come
           in?</label>
         <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput">
@@ -134,8 +142,14 @@
         </a>
       </div>
     </div>
-    <div id="Personal-Info" style="display: none;">
+  </div>
+  </section>
 
+  <section id="Personal-Info" class="section">
+    <div class="sub-header">
+      <h1 id="Page-Name">Personal-Info</h1>
+    </div>
+    <div id="Personal-Info">
       <div class="container">
         <form class="was-validated">
           <div class="form-group">
@@ -164,9 +178,13 @@
       </div>
       </form>
     </div>
+  </section>
 
-
-    <div id="Payment-Submit" style="display: none;">
+  <section id="Payment-Submit" class="section">
+    <div class="sub-header">
+      <h1 id="Page-Name">Submit Payment</h1>
+    </div>
+    <div id="Payment-Submit">
       <div class="container">
         <h7>Subtotal: $<span id="subtotal"> </span> </h7>
         <br />
@@ -223,6 +241,7 @@
 
       </div>
     </div>
+  </section>
   </div>
   </div>
 
