@@ -3,13 +3,13 @@
 */
 
 .main-container {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .header {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: #86DC3D;
+  background-color: #86dc3d;
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -22,23 +22,23 @@
 }
 
 .btn-primary {
-  background-color: #86DC3D;
+  background-color: #86dc3d;
   border: none;
   color: antiquewhite;
 }
 
 .btn-primary:hover {
-  background-color: #5FAD56;
+  background-color: #5fad56;
   color: antiquewhite;
 }
 
 .btn-primary:active {
-  background-color: #5FAD56;
+  background-color: #5fad56;
   color: antiquewhite;
 }
 
 .btn-primary:focus {
-  background-color: #5FAD56;
+  background-color: #5fad56;
   color: antiquewhite;
 }
 
@@ -60,7 +60,7 @@
 
 .nav-bar-b-sel {
   color: black;
-  background-color: #86DC3D;
+  background-color: #86dc3d;
 }
 
 .btn:focus {

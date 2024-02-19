@@ -3,18 +3,22 @@ const pages = [
   {
     id: "Service-Select",
     title: "Services",
+    logo: "images/services.png",
   },
   {
     id: "Time-Select",
     title: "Select time of appointment",
+    logo: "images/time.png",
   },
   {
     id: "Personal-Info",
     title: "Personal Information",
+    logo: "images/personal-info.png",
   },
   {
     id: "Payment-Submit",
     title: "Payment and confirmation",
+    logo: "images/payment-submit",
   },
 ];
 
