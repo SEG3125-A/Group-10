@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Survey Results</title>  
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      h1, h2, h3 {
+        color: #333;
+      }
+      
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Survey Results</h1>
+    
+    <h2>Number of Responses: <%= surveyData.length %></h2>
+    
+    <div style="background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+
+      <h3>User Roles</h3>
+      <ul>
+        <% let studentCount = 0; %>
+        <% let profCount = 0; %>
+        <% let adminCount = 0; %>
+            
+        <% surveyData.forEach(response => { %>
+          <% if(response.role === 'student') { %>
+             <% studentCount++ %>
+          <% } else if(response.role === 'prof') { %>
+             <% profCount++ %>  
+          <% } else if(response.role === 'admin') { %>
+             <% adminCount++ %>
+          <% } %>
+        <% }); %>
+  
+        <li>Students: <%= studentCount %></li>
+        <li>Profs: <%= profCount %></li>  
+        <li>Admins: <%= adminCount %></li>
+      </ul>
+      
+      <h3>Favorite Features</h3>
+       <% let featureCounts = {}; %>
+      <% surveyData.forEach(response => { %>
+        <% response.features.forEach(feature => { %>
+          <% if(!featureCounts[feature]) { featureCounts[feature] = 0; } %>
+          <% featureCounts[feature]++ %>
+        <% }); %>
+      <% }); %>
+      
+      <ul>
+      <% Object.keys(featureCounts).forEach(feature => { %>
+       <li><%= feature %>: <%= featureCounts[feature] %></li>
+      <% }); %>
+      </ul>
+      
+      <h3>Preferred Platforms</h3>
+      <ul>
+       <% let platformCounts = {D2L: 0, Canva: 0, Other: 0}; %>
+        <% surveyData.forEach(response => { %>
+          <% if(response.platform) { %>
+            <% platformCounts[response.platform]++ %>  
+          <% } %>
+        <% }); %>
+  
+        <li>D2L: <%= platformCounts.D2L %></li>
+        <li>Canva: <%= platformCounts.Canva %></li>
+        <li>Other: <%= platformCounts.Other %></li>
+      </ul>
+
+    </div>
+  </body>
+</html>

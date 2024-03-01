@@ -2,13 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link href="styles/styles.css" rel="stylesheet" type="text/css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Caveat&family=Coiny&family=Sono:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="styles/styles.css" rel="stylesheet" type="text/css"/>
     <title>Brightspace UI Survey</title>
   </head>
 
@@ -75,7 +69,7 @@
         <fieldset class="checkboxes">
           <legend>Favorite Feature(s):</legend>
           <label
-            ><input type="checkbox" name="Feature" value="Classes" />Class
+            ><input type="checkbox" name="Feature" value="Class" />Class
             Structure<br
           /></label>
           <label
@@ -108,28 +102,28 @@
         <div class="space"></div>
         <fieldset class="list">
           <legend>Have you encountered any errors using Brightspace?</legend>
-          <textarea class="text" placeholder=""></textarea>
+          <textarea class="text" name="errors" placeholder=""></textarea>
         </fieldset>
 
         <div class="space"></div>
 
         <fieldset class="list">
           <legend>Do you have any suggestions to improve the website?</legend>
-          <textarea class="text" placeholder=""></textarea>
+          <textarea class="text" name="suggestions" placeholder=""></textarea>
         </fieldset>
 
         <div class="space"></div>
 
         <fieldset class="list">
           <legend>Comments:</legend>
-          <textarea class="text" placeholder="Additional Comments"></textarea>
+          <textarea class="text" name="comments" placeholder="Additional Comments"></textarea>
         </fieldset>
       </div>
       <div class="space"></div>
 
       <fieldset class="TC">
         <label
-          ><input type="checkbox" name="Feature" value="Classes" />I Accept The
+          ><input type="checkbox" name="terms" />I Accept The
           <a href="https://en.wikipedia.org/wiki/Terms_of_service"
             >Terms of Service</a
           >
@@ -145,4 +139,38 @@
     <div class="space"></div>
     <p class="sign">Mohamad Cheaito - Antoine Lavigne - Miten Soni</p>
   </body>
+
+  <script>
+    document.getElementById("submitButton").addEventListener("click", function() {
+      // Collect form data
+      var selectedPlatform = document.querySelector("input[name='Platform']:checked");
+      var formData = {
+        firstname: document.getElementsByName("firstname")[0].value,
+        lastname: document.getElementsByName("lastname")[0].value,
+        role: document.getElementsByClassName("role")[0].value,
+        features: Array.from(document.querySelectorAll("input[name='Feature']:checked")).map(checkbox => checkbox.value),
+        platform: selectedPlatform ? selectedPlatform.value : null,
+        errors: document.querySelector("textarea[name='errors']").value,
+        suggestions: document.querySelector("textarea[name='suggestions']").value,
+        comments: document.querySelector("textarea[name='comments']").value,
+        acceptTerms: document.querySelector("input[name='terms']").checked,
+      };
+
+      // Send data to server using fetch
+      fetch('/submit-survey', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(response => response.text())
+      .then(message => {
+        // window.location.href = '/thankyou.html';
+      })
+      .catch(error => {
+        console.error('Error submitting survey:', error);
+      });
+    });
+  </script>
 </html>
