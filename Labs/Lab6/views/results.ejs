@@ -1,86 +1,146 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Survey Results</title>  
+    <title>Survey Results</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
         padding: 20px;
+        margin: 0;
       }
-      
-      h1, h2, h3 {
-        color: #333;
+
+      h1,
+      h2 {
+        color: rgb(0, 120, 70);
       }
-      
-      ul {
-        list-style: none;
-        padding-left: 0;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
       }
-      
-      li {
-        margin-bottom: 10px;
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        color: rgb(0, 120, 70);
+      }
+
+      .response-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 20px;
+        overflow: auto;
       }
     </style>
   </head>
-  
   <body>
     <h1>Survey Results</h1>
-    
-    <h2>Number of Responses: <%= surveyData.length %></h2>
-    
-    <div style="background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
 
+    <h2>Summary</h2>
+    <div
+      style="
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      "
+    >
       <h3>User Roles</h3>
       <ul>
-        <% let studentCount = 0; %>
-        <% let profCount = 0; %>
-        <% let adminCount = 0; %>
-            
-        <% surveyData.forEach(response => { %>
-          <% if(response.role === 'student') { %>
-             <% studentCount++ %>
-          <% } else if(response.role === 'prof') { %>
-             <% profCount++ %>  
-          <% } else if(response.role === 'admin') { %>
-             <% adminCount++ %>
-          <% } %>
-        <% }); %>
-  
+        <% let studentCount = 0; %> <% let profCount = 0; %> <% let adminCount =
+        0; %> <% surveyData.forEach(response => { %> <% if(response.role ===
+        'student') { %> <% studentCount++ %> <% } else if(response.role ===
+        'prof') { %> <% profCount++ %> <% } else if(response.role === 'admin') {
+        %> <% adminCount++ %> <% } %> <% }); %>
+
         <li>Students: <%= studentCount %></li>
-        <li>Profs: <%= profCount %></li>  
+        <li>Profs: <%= profCount %></li>
         <li>Admins: <%= adminCount %></li>
       </ul>
-      
+
       <h3>Favorite Features</h3>
-       <% let featureCounts = {}; %>
-      <% surveyData.forEach(response => { %>
-        <% response.features.forEach(feature => { %>
-          <% if(!featureCounts[feature]) { featureCounts[feature] = 0; } %>
-          <% featureCounts[feature]++ %>
-        <% }); %>
+      <% let featureCounts = {}; %> <% surveyData.forEach(response => { %> <%
+      response.features.forEach(feature => { %> <% if(!featureCounts[feature]) {
+      featureCounts[feature] = 0; } %> <% featureCounts[feature]++ %> <% }); %>
       <% }); %>
-      
+
       <ul>
-      <% Object.keys(featureCounts).forEach(feature => { %>
-       <li><%= feature %>: <%= featureCounts[feature] %></li>
-      <% }); %>
+        <% Object.keys(featureCounts).forEach(feature => { %>
+        <li><%= feature %>: <%= featureCounts[feature] %></li>
+        <% }); %>
       </ul>
-      
+
       <h3>Preferred Platforms</h3>
       <ul>
-       <% let platformCounts = {D2L: 0, Canva: 0, Other: 0}; %>
-        <% surveyData.forEach(response => { %>
-          <% if(response.platform) { %>
-            <% platformCounts[response.platform]++ %>  
-          <% } %>
-        <% }); %>
-  
+        <% let platformCounts = {D2L: 0, Canva: 0, Other: 0}; %> <%
+        surveyData.forEach(response => { %> <% if(response.platform) { %> <%
+        platformCounts[response.platform]++ %> <% } %> <% }); %>
+
         <li>D2L: <%= platformCounts.D2L %></li>
         <li>Canva: <%= platformCounts.Canva %></li>
         <li>Other: <%= platformCounts.Other %></li>
       </ul>
+    </div>
 
+    <h2>Individual Responses</h2>
+
+    <div id="responseContainer">
+      <% surveyData.forEach((response, index) => { %>
+      <div class="response-container" id="response<%= index + 1 %>">
+        <h3 style="color: rgb(0, 120, 70)">
+          Response <%= index + 1 %>: <%= response.firstname %> <%=
+          response.lastname %>
+        </h3>
+        <table>
+          <tr>
+            <th style="color: rgb(0, 120, 70)">Question</th>
+            <th style="color: rgb(0, 120, 70)">Response</th>
+          </tr>
+          <tr>
+            <td>Role</td>
+            <td><%= response.role %></td>
+          </tr>
+          <tr>
+            <td>Features</td>
+            <td><%= response.features.join(', ') %></td>
+          </tr>
+          <tr>
+            <td>Platform</td>
+            <td><%= response.platform %></td>
+          </tr>
+          <tr>
+            <td>Errors</td>
+            <td><%= response.errors %></td>
+          </tr>
+          <tr>
+            <td>Suggestions</td>
+            <td><%= response.suggestions %></td>
+          </tr>
+          <tr>
+            <td>Comments</td>
+            <td><%= response.comments %></td>
+          </tr>
+          <tr>
+            <td>Accept Terms</td>
+            <td><%= response.acceptTerms %></td>
+          </tr>
+        </table>
+      </div>
+      <% }); %>
     </div>
   </body>
 </html>
