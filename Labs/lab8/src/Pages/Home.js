@@ -11,7 +11,10 @@ function Home() {
             // Navigate to /services
             window.location.href = "/services";
         }}>Services</Button>
-        <Button style={{height: 40, backgroundColor: "white", color: "black", margin: 10}}>Professionals</Button>
+        <Button style={{height: 40, backgroundColor: "white", color: "black", margin: 10}} onClick={() => (
+            // Navigate to /professionals
+            window.location.href = "/professionals"
+        )}>Professionals</Button>
       </div>
     </div>
     
