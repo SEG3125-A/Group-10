@@ -1,5 +1,6 @@
 import NavBar from "../Components/NavBar";
 import { Button, Card } from '@mui/material';
+import '../globalstyles.css';
 
 const SERVICES = [
     {
