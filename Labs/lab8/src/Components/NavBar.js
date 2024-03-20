@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { translate } from "../I18n";
 
 function NavBar() {
   // Get the current URL
@@ -50,7 +51,7 @@ function NavBar() {
             window.location.href = window.location.href.replace(/\/(en|fr)/, `/${lang}`);
           }}
         >
-          Lang
+          {lang === 'en' ? 'Français' : 'English'}
         </Button>
         {/** Header */}
         <Button
@@ -66,7 +67,7 @@ function NavBar() {
             window.location.href = "/" + lang;
           }}
         >
-          Home
+          {translate("home", lang)}
         </Button>
         <Button
           style={{
@@ -81,7 +82,7 @@ function NavBar() {
             window.location.href = "/" + lang + "/services";
           }}
         >
-          Services
+          {translate("services", lang)}
         </Button>
         <Button
           style={{
@@ -96,7 +97,7 @@ function NavBar() {
             (window.location.href = "/" + lang + "/professionals")
           }
         >
-          Professionals
+          {translate("professionals", lang)}
         </Button>
         <Button
           style={{
@@ -111,7 +112,7 @@ function NavBar() {
             window.location.href = "/" + lang + "/checkout";
           }}
         >
-          Checkout
+          {translate("checkout", lang)}
         </Button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "@mui/material";
+import { translate } from "../I18n";
 
 function Home() {
 
@@ -29,11 +30,9 @@ function Home() {
           >
             CosmetiGo
           </header>
-          <h1 className=" first-line">Wellness, delivered!</h1>
+          <h1 className=" first-line">{translate("slogan", lang)}</h1>
           <h3 className=" paragraph">
-            CosmetiGo connects you with top on-demand massage, skincare, hair,
-            and beauty service professionals. Taking care of yourself has never
-            been this easy and convenient.
+            {translate("description", lang)}
           </h3>
           <Button
             style={{
@@ -51,7 +50,7 @@ function Home() {
               window.location.href = "/" + lang + "/services";
             }}
           >
-            Get Started
+            {translate("getStarted", lang)}
           </Button>
         </div>
         <div className="right-side">

@@ -1,54 +1,8 @@
 import NavBar from "../Components/NavBar";
 import { Button, Card } from "@mui/material";
 import "../globalstyles.css";
+import { translate } from "../I18n";
 
-const SERVICES = [
-  {
-    name: "Haircut",
-    price: 40,
-    image: "haircut.jpeg",
-  },
-  {
-    name: "Hair Coloring",
-    price: 60,
-    image: "hair-coloring.jpeg",
-  },
-  {
-    name: "Manicure",
-    price: 30,
-    image: "manicure.jpeg",
-  },
-  {
-    name: "Pedicure",
-    price: 40,
-    image: "pedicure.jpeg",
-  },
-  {
-    name: "Facial",
-    price: 50,
-    image: "facial.jpeg",
-  },
-  {
-    name: "Massage",
-    price: 80,
-    image: "massage.jpeg",
-  },
-  {
-    name: "Makeup",
-    price: 60,
-    image: "makeup.jpeg",
-  },
-  {
-    name: "Waxing",
-    price: 40,
-    image: "waxing.jpeg",
-  },
-  {
-    name: "Beard Trim",
-    price: 20,
-    image: "beard-trim.jpeg",
-  },
-];
 
 function Services() {
 
@@ -59,12 +13,60 @@ function Services() {
       lang = 'fr'
     }
 
+    let SERVICES = [
+    {
+        name: translate("haircut", lang),
+        price: 40,
+        image: "haircut.jpeg",
+    },
+    {
+        name: translate("hairColoring", lang),
+        price: 60,
+        image: "hair-coloring.jpeg",
+    },
+    {
+        name: translate("manicure", lang),
+        price: 30,
+        image: "manicure.jpeg",
+    },
+    {
+        name: translate("pedicure", lang),
+        price: 40,
+        image: "pedicure.jpeg",
+    },
+    {
+        name: translate("facial", lang),
+        price: 50,
+        image: "facial.jpeg",
+    },
+    {
+        name: translate("massage", lang),
+        price: 80,
+        image: "massage.jpeg",
+    },
+    {
+        name: translate("makeup", lang),
+        price: 60,
+        image: "makeup.jpeg",
+    },
+    {
+        name: translate("waxing", lang),
+        price: 40,
+        image: "waxing.jpeg",
+    },
+    {
+        name: translate("beardTrim", lang),
+        price: 20,
+        image: "beard-trim.jpeg",
+    },
+    ];
+
   return (
     <div>
       <NavBar />
       {/* Title */}
       <div style={{ fontFamily: "NonSans", fontSize: 40, margin: 20 }}>
-        Services
+        {translate("services", lang)}
       </div>
       {/* Services */}
       <div
@@ -97,7 +99,7 @@ function Services() {
             >
               <img
                 src={require(`../images/${service.image}`)}
-                style={{ width: "100%", height: 275, borderRadius: 20 }}
+                style={{ width: "100%", height: 230, borderRadius: 20 }}
               />
               <div
                 style={{

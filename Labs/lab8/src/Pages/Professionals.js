@@ -5,6 +5,7 @@ import "../styles/professionals.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card } from "@mui/material";
+import { translate } from "../I18n";
 
 function Professionals() {
   const url = window.location.href;
@@ -16,31 +17,31 @@ function Professionals() {
   
   const [selectedProfessional, setSelectedProfessional] = useState(null);
 
-  const professionals = [
+  let professionals = [
     {
       id: 1,
       name: "John Doe",
-      qualifications: "MD Dermatology",
-      services: ["Facial Treatments", "Botox", "Dermal Fillers"],
+      qualifications: translate("mdDermatology", lang),
+      services: [translate("facialTreatments", lang), translate("botox", lang), translate("dermalFillers", lang)],
       image: "person1.png",
     },
     {
       id: 2,
       name: "Jane Smith",
-      qualifications: "Licensed Cosmetologist",
-      services: ["Chemical Peels", "Microdermabrasion", "Laser Hair Removal"],
+      qualifications: translate("licensedCosmetologist", lang),
+      services: [translate("chemicalPeels", lang), translate("microdermabrasion", lang), translate("laserHairRemoval", lang)],
       image: "person3.jpeg",
     },
     {
       name: "Emily Johnson",
-      qualifications: "Licensed Cosmetologist",
-      services: ["Facial Treatments", "Botox", "Dermal Fillers"],
+      qualifications: translate("licensedCosmetologist", lang),
+      services: [translate("facialTreatments", lang), translate("botox", lang), translate("dermalFillers", lang)],
       image: "person1.png",
     },
     {
       name: "Maria Garcia",
-      qualifications: "Licensed Cosmetologist",
-      services: ["Facial Treatments", "Botox", "Dermal Fillers"],
+      qualifications: translate("licensedCosmetologist", lang),
+      services: [translate("facialTreatments", lang), translate("botox", lang), translate("dermalFillers", lang)],
       image: "person3.jpeg",
     },
   ];
@@ -71,7 +72,7 @@ function Professionals() {
     <div>
       <NavBar />
       <div style={{ fontFamily: "NonSans", fontSize: 40, margin: 20 }}>
-        Our Professionals
+        {translate("ourProfessionals", lang)}
       </div>
       <div
         className="professional-cards"
@@ -132,7 +133,7 @@ function Professionals() {
                   handleSelectProfessional(service, professional.name);
                 }}
               >
-                Select
+                {translate("select", lang)}
               </Button>
             </div>
           </div>
