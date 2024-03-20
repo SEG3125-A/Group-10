@@ -7,6 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card } from "@mui/material";
 
 function Professionals() {
+  const url = window.location.href;
+  const isFr = url.includes("/fr");
+  let lang = 'en'
+  if (isFr) {
+    lang = 'fr'
+  }
+  
   const [selectedProfessional, setSelectedProfessional] = useState(null);
 
   const professionals = [
@@ -57,7 +64,7 @@ function Professionals() {
 
   const service = new URLSearchParams(window.location.search).get("service");
   const handleSelectProfessional = (service, professionalName) => {
-    window.location.href = `/checkout?service=${service}&professional=${professionalName}`;
+    window.location.href = "/" + lang + `/checkout?service=${service}&professional=${professionalName}`;
   };
 
   return (

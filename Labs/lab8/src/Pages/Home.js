@@ -2,6 +2,14 @@ import React from "react";
 import { Button, Card } from "@mui/material";
 
 function Home() {
+
+  const url = window.location.href;
+  const isFr = url.includes("/fr");
+  let lang = 'en'
+  if (isFr) {
+    lang = 'fr'
+  }
+
   return (
     <div>
       <div className="home-container">
@@ -40,7 +48,7 @@ function Home() {
             }}
             onClick={() => {
               // Navigate to /services
-              window.location.href = "/services";
+              window.location.href = "/" + lang + "/services";
             }}
           >
             Get Started

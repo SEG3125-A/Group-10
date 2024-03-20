@@ -51,6 +51,14 @@ const SERVICES = [
 ];
 
 function Services() {
+
+    const url = window.location.href;
+    const isFr = url.includes("/fr");
+    let lang = 'en'
+    if (isFr) {
+      lang = 'fr'
+    }
+
   return (
     <div>
       <NavBar />
@@ -72,7 +80,7 @@ function Services() {
             <Card
               onClick={() => {
                 // Navigate to /professionals?service=service.name
-                window.location.href = `/professionals?service=${service.name}`;
+                window.location.href = "/" + lang + `/professionals?service=${service.name}`;
               }}
               style={{
                 margin: 10,

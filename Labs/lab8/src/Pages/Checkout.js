@@ -6,6 +6,14 @@ import { Button, Card, TextField, Grid } from '@mui/material';
 
 
 function Checkout() {
+
+    const url = window.location.href;
+    const isFr = url.includes("/fr");
+    let lang = 'en'
+    if (isFr) {
+      lang = 'fr'
+    }
+
     const history = useNavigate();
     const [selectedService, setSelectedService] = useState('');
     const [selectedProfessional, setSelectedProfessional] = useState('');

@@ -9,9 +9,14 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={ <Home/> } />
-        <Route path="/services" element={ <Services/> } />
-        <Route path="/professionals" element={ <Professionals/> } />
-        <Route path="/checkout" element={ <Checkout/> } />
+        <Route path="/en" element={ <Home/> } />
+        <Route path="/en/services" element={ <Services/> } />
+        <Route path="/en/professionals" element={ <Professionals/> } />
+        <Route path="/en/checkout" element={ <Checkout/> } />
+        <Route path="/fr" element={ <Home/> } />
+        <Route path="/fr/services" element={ <Services/> } />
+        <Route path="/fr/professionals" element={ <Professionals/> } />
+        <Route path="/fr/checkout" element={ <Checkout/> } />
       </Routes>
     </div>
   )

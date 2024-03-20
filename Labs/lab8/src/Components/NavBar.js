@@ -8,6 +8,11 @@ function NavBar() {
   const isServices = url.includes("/services");
   const isProfessionals = url.includes("/professionals");
   const isCheckout = url.includes("/checkout");
+  const isFr = url.includes("/fr");
+  let lang = 'en'
+  if (isFr) {
+    lang = 'fr'
+  }
 
   const enableHome = true;
   const enableServices = true;
@@ -40,8 +45,25 @@ function NavBar() {
           }}
           disabled={!enableHome}
           onClick={() => {
+            lang = lang === 'en' ? 'fr' : 'en';
+            // change the language
+            window.location.href = window.location.href.replace(/\/(en|fr)/, `/${lang}`);
+          }}
+        >
+          Lang
+        </Button>
+        {/** Header */}
+        <Button
+          style={{
+            height: 40,
+            backgroundColor: "white",
+            color: enableHome ? "black" : "grey",
+            margin: 10,
+          }}
+          disabled={!enableHome}
+          onClick={() => {
             // Navigate to /services
-            window.location.href = "/";
+            window.location.href = "/" + lang;
           }}
         >
           Home
@@ -56,7 +78,7 @@ function NavBar() {
           disabled={!enableServices}
           onClick={() => {
             // Navigate to /services
-            window.location.href = "/services";
+            window.location.href = "/" + lang + "/services";
           }}
         >
           Services
@@ -71,7 +93,7 @@ function NavBar() {
           disabled={!enableProfessionals}
           onClick={() =>
             // Navigate to /professionals
-            (window.location.href = "/professionals")
+            (window.location.href = "/" + lang + "/professionals")
           }
         >
           Professionals
@@ -86,7 +108,7 @@ function NavBar() {
           disabled={!enableCheckout}
           onClick={() => {
             // Navigate to /services
-            window.location.href = "/checkout";
+            window.location.href = "/" + lang + "/checkout";
           }}
         >
           Checkout
