@@ -121,5 +121,41 @@ const STRINGS = {
     select: {
         en: "Select",
         fr: "Sélectionner",
-    }
+    },
+    checkout: {
+        en: "Checkout",
+        fr: "Caisse",
+    },
+    selectedProfessional: {
+        en: "Selected Professional",
+        fr: "Professionnel sélectionné",
+    },
+    selectededService: {
+        en: "Selected Service",
+        fr: "Service sélectionné",
+    },
+    credtiCardNumber: {
+        en: "Credit Card Number",
+        fr: "Numéro de carte de crédit",
+    },
+    expirationDate: {
+        en: "Expiration Date",
+        fr: "Date d'expiration",
+    },
+    cvv: {
+        en: "CVV",
+        fr: "CVV",
+    },
+    zipCode: {
+        en: "Postal Code",
+        fr: "Code postal",
+    },
+    confirmAndPay: {
+        en: "Confirm and Pay",
+        fr: "Confirmer et payer",
+    },
+    paymentConfirmation: {
+        en: "Payment Confirmed",
+        fr: "Paiement confirmé",
+    },
 }

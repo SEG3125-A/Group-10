@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, TextField, Grid } from '@mui/material';
+import { translate } from "../I18n";
 
 
 function Checkout() {
@@ -34,7 +35,7 @@ function Checkout() {
     };
 
     const handleConfirm = () => {
-        alert("Payment confirmed!");
+        alert(translate("paymentConfirmation", lang));
     };
 
     useEffect(() => {
@@ -45,7 +46,7 @@ function Checkout() {
         // Redirect if service or professional is missing,
         // do you guys think this is good?
         if (!service || !professional) {
-            history('/services'); 
+            window.location.replace(`/${lang}/services`);
         } else {
             setSelectedService(service);
             setSelectedProfessional(professional);
@@ -64,16 +65,16 @@ function Checkout() {
     return (
         <div>
             <NavBar />
-            <div style={{ fontFamily: "NonSans", fontSize: 40, margin: 20 }}>Checkout</div>
+            <div style={{ fontFamily: "NonSans", fontSize: 40, margin: 20 }}>{translate("checkout",lang)}</div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <Card style={{ margin: 10, padding: 20, width: 400, borderRadius: 20, backgroundColor: "#f5f5f5" }}>
-                    <div style={{ marginBottom: 20, fontSize: 20 }}>Selected Service: {selectedService}</div>
-                    <div style={{ marginBottom: 20, fontSize: 20 }}>Selected Professional: {selectedProfessional}</div>
+                    <div style={{ marginBottom: 20, fontSize: 20 }}>{translate("selectededService", lang)}: {selectedService}</div>
+                    <div style={{ marginBottom: 20, fontSize: 20 }}>{translate("selectedProfessional", lang)}: {selectedProfessional}</div>
                     <form style={{ width: '100%' }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Name"
+                                    label={translate("selectedProfessional", lang)}
                                     name="name"
                                     value={formData.name}
                                     onChange={handleInputChange}
@@ -83,7 +84,7 @@ function Checkout() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Credit Card Number"
+                                    label={translate("credtiCardNumber", lang)}
                                     name="creditCardNumber"
                                     value={formData.creditCardNumber}
                                     onChange={handleInputChange}
@@ -93,7 +94,7 @@ function Checkout() {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
-                                    label="Expiration Date"
+                                    label={translate("expirationDate", lang)}
                                     name="expirationDate"
                                     value={formData.expirationDate}
                                     onChange={handleInputChange}
@@ -103,7 +104,7 @@ function Checkout() {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
-                                    label="CVV"
+                                    label={translate("cvv", lang)}
                                     name="cvv"
                                     value={formData.cvv}
                                     onChange={handleInputChange}
@@ -113,7 +114,7 @@ function Checkout() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Zip Code"
+                                    label={translate("zipCode", lang)}
                                     name="zipCode"
                                     value={formData.zipCode}
                                     onChange={handleInputChange}
@@ -124,7 +125,7 @@ function Checkout() {
                         </Grid>
                     </form>
                 </Card>
-                <Button onClick={handleConfirm} style={{ marginTop: 20 }}>Confirm and Pay</Button>
+                <Button onClick={handleConfirm} style={{ marginTop: 20 }}>{translate("confirmAndPay" , lang)}</Button>
             </div>
         </div>
     );

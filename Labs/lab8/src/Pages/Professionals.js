@@ -58,9 +58,7 @@ function Professionals() {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const service = queryParams.get("service");
-    if (!service) {
-      history("/services");
-    }
+    if(!service)  window.location.replace(`/${lang}/services`);
   }, [history]);
 
   const service = new URLSearchParams(window.location.search).get("service");
