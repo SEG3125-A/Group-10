@@ -1,0 +1,94 @@
+/* Style sheet
+   color picker www.w3schools.com/colors/colors_picker.asp
+*/
+
+.main-container {
+  font-family: "Lato", sans-serif;
+}
+
+.header {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: #86dc3d;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.sub-header {
+  padding-top: 3%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.btn-primary {
+  background-color: #86dc3d;
+  border: none;
+  color: antiquewhite;
+}
+
+.btn-primary:hover {
+  background-color: #5fad56;
+  color: antiquewhite;
+}
+
+.btn-primary:active {
+  background-color: #5fad56;
+  color: antiquewhite;
+}
+
+.btn-primary:focus {
+  background-color: #5fad56;
+  color: antiquewhite;
+}
+
+.form-control {
+  width: 25vmax;
+}
+
+.nav-bar {
+  height: 50px;
+  width: 100%;
+  color: black;
+  background-color: lightgray;
+}
+
+.nav-bar-b {
+  color: black;
+  background-color: lightgray;
+}
+
+.nav-bar-b-sel {
+  color: black;
+  background-color: #86dc3d;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Chat Button and Chat Container Styles */
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  color: black;
+}
+
+.chat-container {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 350px;
+  height: 430px;
+  z-index: 9998;
+}
+
+.chat-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

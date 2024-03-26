@@ -1,0 +1,273 @@
+<!-- This file contains many elements adapted from the online tutoral -->
+<!-- on Bootstrap 4 as found here: https://www.w3schools.com/bootstrap4/default.asp -->
+
+<!-- Images source: -->
+<!-- jule.jpg taken from https://www.freepik.com/premium-vector/cartoon-successful-hairdresser_3951066.htm -->
+<!-- Erwind.jpb https://www.kijiji.ca/v-construction-trades-jobs/winnipeg/bicycle-mechanic/1499188319 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- The head should contain an appropriate title for your site -->
+
+<head>
+  <title>Lab10 Bike Repair Shop</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Style sheet (CSS) and JavaScript scripts necessary to use Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- Your own additional style sheet -->
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="d-flex flex-row header">
+      <img src="images/BikeLogo.png" style="width: 10%" />
+      <div class="px-5 align-center my-auto">
+        <h1 class="my-auto">Bike Repair Shop</h1>
+      </div>
+      <div class="px-5 align-right my-auto">
+        <p class="my-auto">675 Boulevard Saint-Joseph, Gatineau, Quebec J8Y 4B4</p>
+      </div>
+    </div>
+    <div class="btn-group nav-bar" role="group">
+      <button type="button" class="nav-bar-b-sel btn" id="nav-0" onclick="navigateTo('Service-Select')">Select Service</button>
+      <button type="button" class="nav-bar-b btn" id="nav-1" disabled onclick="navigateTo('Time-Select')">Select Time</button>
+      <button type="button" class="nav-bar-b btn" id="nav-2" disabled onclick="navigateTo('Personal-Info')">Personal Information</button>
+      <button type="button" class="nav-bar-b btn" id="nav-3" disabled onclick="navigateTo('Payment-Submit')">Payment</button>
+    </div>
+    <div class="sub-header">
+      <div class="logo-title-container" style="display: flex; align-items: center;">
+      <img src="images/services.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+      <h1 id="Page-Name">Services</h1>
+      </div>
+    </div>
+    
+    <section id="Service-Select" class="section">
+    <div class="container" id="Service-Select">
+      <div class="row">
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/FlatTire.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Flat Tire</h5>
+              <p class="card-text">Repair a flat tire on your bike.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 20$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Suspension.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Suspension Maintenance</h5>
+              <p class="card-text">Change the fluids and clean suspension.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 40$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Cleaning.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Bike cleaning</h5>
+              <p class="card-text">Complete cleaning of your bike.</p>
+              <p class="card-text">Mechanic: Tom</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 15$</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/Derailleur.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Derailleur Adjustment</h5>
+              <p class="card-text">Adjust the gear shifting on your bike.</p>
+              <p class="card-text">Mechanic: Tom</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 25$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/disk.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Disk Break Replacement</h5>
+              <p class="card-text">Replace pads and disks on your brakes.</p>
+              <p class="card-text">Mechanic: Steve</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 45$</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-4" style="width: 18rem">
+            <img src="images/parts.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Bike assembly</h5>
+              <p class="card-text">Assemble a bike from scratch.</p>
+              <p class="card-text">Mechanic: Josh</p>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 90$</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="Time-Select" class="section">
+    <div class="sub-header">
+      <div class="logo-title-container" style="display: flex; align-items: center;">
+        <img src="images/time.jpg" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <h1 id="Page-Name">Time-Select</h1>
+        </div>    </div>
+    <div class="container">
+    <div id="Time-Select">
+      <div class="form-group" style="margin-top:3vh; margin-left: 1vmax;">
+        <label for="dateTimeInput" style="margin-bottom: 2vmax; font-size: 1.5vmax;">When would you like to come
+          in?</label>
+        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dateTimeInput">
+        <a class="btn btn-primary" style="margin-top: 5vmax;" onclick="navigateTo('Service-Select');">Go
+          back</a>
+        <a class="btn btn-primary" style="margin-top: 5vmax; margin-left: 15vmax;"
+          onclick="navigateTo('Personal-Info');">
+          Next >
+        </a>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section id="Personal-Info" class="section" >
+    <div class="sub-header">
+      <div class="logo-title-container" style="display: flex; align-items: center;">
+        <img src="images/personal-info.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <h1 id="Page-Name">Personal-Info</h1>
+        </div>    </div>
+    <div id="Personal-Info">
+      <div class="container">
+        <form class="was-validated">
+          <div class="form-group">
+            <label for="uname">Name:</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter full name" name="uname"
+              pattern="^(\w\w+)\s(\w+)$" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email address"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" name="email" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" class="form-control" id="phone" maxlength="10" pattern="[0-9]{10}"
+              placeholder="Enter phone number" name="phone" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback"></div>
+          </div>
+          <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Time-Select');">Go back</a>
+          <a style="margin-top: 1vmax; margin-left: 14vmax;" id="toPayment" class="btn btn-primary"> Next > </a>
+      </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="Payment-Submit" class="section">
+    <div class="sub-header">
+      <div class="logo-title-container" style="display: flex; align-items: center;">
+        <img src="images/payment.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <h1 id="Page-Name">Submit Payment</h1>
+        </div>    </div>
+    <div id="Payment-Submit">
+      <div class="container">
+        <h7>Subtotal: $<span id="subtotal"> </span> </h7>
+        <br />
+        <h7>Tax: $<span id="tax"> </span> </h7>
+        <h2>Total: $<span id="Total"> </span></h2>
+        <div class="row">
+          <div class="col-md-6">
+            <form class="was-validated">
+              <div class="form-group">
+                <label for="Card">Credit Card number</label>
+                <input type="numeric" pattern="[0-9\s]{13,16}" class="form-control" id="Card"
+                  placeholder="Enter Credit Card Number" maxlength="16" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback" style="font-weight: bolder; font-size: large;"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="CVV">Security Code (CVV)</label>
+                <input type="text" pattern="[0-9\s]{3,4}" class="form-control" id="CVV" placeholder="CVV" maxlength="4"
+                  required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback" style="font-weight: bolder; font-size: large;"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="Expiry">Expiry Date</label>
+                <div class="d-flex">
+                  <input type="text" class="form-control col-2 mr-2" id="Month" placeholder="MM" pattern="[0-9\s]{2}"
+                    maxlength="2" required>
+                  <input type="text" class="form-control col-2" id="Year" pattern="[0-9\s]{2}" placeholder="YY"
+                    maxlength="2" required>
+                </div>
+                <div id="expVal" style="color: red; font-weight: bolder; font-size: large;"></div>
+              </div>
+              <a style="margin-top: 1vmax;" class="btn btn-primary" onclick="navigateTo('Personal-Info');">Go
+                back</a>
+              <a style="margin-top: 1vmax; margin-left: 15vmax;" class="btn btn-primary" id="submit"> Submit </a>
+            </form>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <h2>Your Information:</h2>
+            <h6>Please review the information below:</h6>
+            <p><strong>Service Selected:</strong> <span id="ServiceSelectedSumm"> </span> </p>
+            <p><strong>Time:</strong> <span id="TimeSelectedSumm"> </span> </p>
+            <p><strong>Name:</strong> <span id="NameSummary"> </span> </p>
+            <p><strong>Phone Number:</strong> <span id="PhoneSummary"> </span></p>
+            <p><strong>Email:</strong> <span id="EmailSummary"> </span></p>
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  </div>
+  </div>
+
+
+  </div>
+  </div>
+<!-- Chat Button -->
+<button id="chatBtn" class="btn btn-primary chat-btn"><i class="fas fa-comments"></i> Chat With Us!</button>
+
+<!-- Chat iframe -->
+<div id="chatContainer" class="chat-container">
+  <iframe id="chatFrame" class="chat-frame"
+    src="https://console.dialogflow.com/api-client/demo/embedded/6fb66d92-351d-4f84-8f17-97901929b196"></iframe>
+</div>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
