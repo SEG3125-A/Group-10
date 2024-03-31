@@ -22,16 +22,31 @@ const pages = [
   },
 ];
 
+// Serivce Ids
+const serviceIds = ["Flat Tire", "Suspension maintenance", "Bike cleaning", "Derailleur Adjustment", "Disk Break Replacement", "Bike assembly"];
+
 // The stage of the navigation
 let stage = 0;
 
-function navigateTo(pageId) {
+function navigateTo(pageId, b=-1) {
   const page = pages.find((p) => p.id === pageId);
   if (!page) {
     console.error(`Page with id ${pageId} not found`);
     return;
   }
   console.log(`Navigating to page: ${page.title}`);
+
+  if (pageId === "Time-Select") {
+    $("#ServiceSelectedSumm").text(serviceIds[b]);
+
+  }
+  if (pageId === "Personal-Info") {
+    let time = document.getElementById("dateTimeInput").value;
+    time = time.replace("T", " at ");
+    $("#TimeSelectedSumm").text(time);
+  }
+
+
 
   // Scroll to the respective section
   const section = document.getElementById(pageId);
@@ -177,6 +192,65 @@ $(document).ready(function () {
     }, 100);
   });
 });
+$(document).ready(function () {
+
+  $("#toPayment").click(function () {
+
+      var ValidName = false;
+      var ValidEmail = false;
+      var ValidPhone = false;
+      var validData = false;
+
+      var name = $('#uname').val();
+      var email = $('#email').val();
+      var phone = $('#phone').val();
+
+      if (name.match("([A-Za-z]{2,16})([ ]{0,1})([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})")) {
+          ValidName = true;
+          $('#uname').removeClass('is-invalid').addClass('is-valid');
+          $('#uname').siblings('.invalid-feedback').text("");
+      }
+      else {
+          $('#uname').removeClass('is-valid').addClass('is-invalid');
+          $('#uname').siblings('.invalid-feedback').text("Please enter your Full Name.");
+          return;
+      }
+
+      if (email.match('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')) {
+          ValidEmail = true;
+          $('#email').removeClass('is-invalid').addClass('is-valid');
+          $('#email').siblings('.invalid-feedback').text("");
+      }
+      else {
+          $('#email').removeClass('is-valid').addClass('is-invalid');
+          $('#email').siblings('.invalid-feedback').text("Please enter a valid email address.");
+          return;
+      }
+
+      if (phone.match('[0-9]{10}')) {
+          ValidPhone = true;
+          $('#phone').removeClass('is-invalid').addClass('is-valid');
+          $('#phone').siblings('.invalid-feedback').text("");
+      }
+      else {
+          $('#phone').removeClass('is-valid').addClass('is-invalid');
+          $('#phone').siblings('.invalid-feedback').text("Please enter a valid Phone Number.");
+          return;
+      }
+
+      setTimeout(function () {
+          validData = ValidPhone && ValidEmail && ValidName;
+          if (validData) {
+              $('#NameSummary').text(name);
+              $('#PhoneSummary').text(phone);
+              $('#EmailSummary').text(email);
+              navigateTo('Payment-Submit');
+          }
+      }, 100);
+  })
+  
+});
+
 
 // Chat Button functionality
 document.addEventListener("DOMContentLoaded", function () {
@@ -189,5 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
       chatContainer.style.display === ""
         ? "block"
         : "none";
+
   });
 });
+

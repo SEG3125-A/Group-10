@@ -63,7 +63,7 @@
               <h5 class="card-title">Flat Tire</h5>
               <p class="card-text">Repair a flat tire on your bike.</p>
               <p class="card-text">Mechanic: Josh</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 20$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select' , 0);">Select 20$</a>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
               <h5 class="card-title">Suspension Maintenance</h5>
               <p class="card-text">Change the fluids and clean suspension.</p>
               <p class="card-text">Mechanic: Josh</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 40$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select', 1);">Select 40$</a>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
               <h5 class="card-title">Bike cleaning</h5>
               <p class="card-text">Complete cleaning of your bike.</p>
               <p class="card-text">Mechanic: Tom</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 15$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select', 2);">Select 15$</a>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@
               <h5 class="card-title">Derailleur Adjustment</h5>
               <p class="card-text">Adjust the gear shifting on your bike.</p>
               <p class="card-text">Mechanic: Tom</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 25$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select', 3);">Select 25$</a>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
               <h5 class="card-title">Disk Break Replacement</h5>
               <p class="card-text">Replace pads and disks on your brakes.</p>
               <p class="card-text">Mechanic: Steve</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 45$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select', 4);">Select 45$</a>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@
               <h5 class="card-title">Bike assembly</h5>
               <p class="card-text">Assemble a bike from scratch.</p>
               <p class="card-text">Mechanic: Josh</p>
-              <a class="btn btn-primary" onclick="navigateTo('Time-Select');">Select 90$</a>
+              <a class="btn btn-primary" onclick="navigateTo('Time-Select', 5);">Select 90$</a>
             </div>
           </div>
         </div>
@@ -196,10 +196,6 @@
         </div>    </div>
     <div id="Payment-Submit">
       <div class="container">
-        <h7>Subtotal: $<span id="subtotal"> </span> </h7>
-        <br />
-        <h7>Tax: $<span id="tax"> </span> </h7>
-        <h2>Total: $<span id="Total"> </span></h2>
         <div class="row">
           <div class="col-md-6">
             <form class="was-validated">
@@ -237,7 +233,6 @@
 
           <div class="col-md-6 mb-4">
             <h2>Your Information:</h2>
-            <h6>Please review the information below:</h6>
             <p><strong>Service Selected:</strong> <span id="ServiceSelectedSumm"> </span> </p>
             <p><strong>Time:</strong> <span id="TimeSelectedSumm"> </span> </p>
             <p><strong>Name:</strong> <span id="NameSummary"> </span> </p>
@@ -264,7 +259,7 @@
 <!-- Chat iframe -->
 <div id="chatContainer" class="chat-container">
   <iframe id="chatFrame" class="chat-frame"
-    src="https://console.dialogflow.com/api-client/demo/embedded/6fb66d92-351d-4f84-8f17-97901929b196"></iframe>
+  src="https://console.dialogflow.com/api-client/demo/embedded/6fb66d92-351d-4f84-8f17-97901929b196"></iframe>
 </div>
 
   <script src="scripts/main.js"></script>
